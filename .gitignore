@@ -9,3 +9,7 @@ node_modules
 xcuserdata/
 DerivedData/
 *.xcodeproj/project.xcworkspace/xcuserdata/
+
+.agents/
+.claude/
+skills-lock.json

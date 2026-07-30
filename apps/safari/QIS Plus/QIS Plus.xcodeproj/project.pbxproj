@@ -10,21 +10,10 @@
 		50C7EE6F301BD34000BA6EE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C7EE6E301BD34000BA6EE0 /* AppDelegate.swift */; };
 		50C7EE71301BD34000BA6EE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C7EE70301BD34000BA6EE0 /* SceneDelegate.swift */; };
 		50C7EE74301BD34000BA6EE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50C7EE72301BD34000BA6EE0 /* LaunchScreen.storyboard */; };
-		50C7EE77301BD34000BA6EE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50C7EE75301BD34000BA6EE0 /* Main.storyboard */; };
 		50C7EE80301BD34000BA6EE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C7EE7F301BD34000BA6EE0 /* AppDelegate.swift */; };
 		50C7EE83301BD34000BA6EE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50C7EE81301BD34000BA6EE0 /* Main.storyboard */; };
 		50C7EE8A301BD34000BA6EE0 /* QIS Plus Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 50C7EE89301BD34000BA6EE0 /* QIS Plus Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		50C7EE94301BD34000BA6EE0 /* QIS Plus Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 50C7EE93301BD34000BA6EE0 /* QIS Plus Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		50C7EE99301BD34000BA6EE0 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 50C7EE5E301BD34000BA6EE0 /* Main.html */; };
-		50C7EE9A301BD34000BA6EE0 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 50C7EE5E301BD34000BA6EE0 /* Main.html */; };
-		50C7EE9B301BD34000BA6EE0 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50C7EE60301BD34000BA6EE0 /* Icon.png */; };
-		50C7EE9C301BD34000BA6EE0 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50C7EE60301BD34000BA6EE0 /* Icon.png */; };
-		50C7EE9D301BD34000BA6EE0 /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 50C7EE61301BD34000BA6EE0 /* Style.css */; };
-		50C7EE9E301BD34000BA6EE0 /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 50C7EE61301BD34000BA6EE0 /* Style.css */; };
-		50C7EE9F301BD34000BA6EE0 /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 50C7EE62301BD34000BA6EE0 /* Script.js */; };
-		50C7EEA0301BD34000BA6EE0 /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 50C7EE62301BD34000BA6EE0 /* Script.js */; };
-		50C7EEA1301BD34000BA6EE0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C7EE63301BD34000BA6EE0 /* ViewController.swift */; };
-		50C7EEA2301BD34000BA6EE0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C7EE63301BD34000BA6EE0 /* ViewController.swift */; };
 		50C7EEA3301BD34000BA6EE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C7EE64301BD34000BA6EE0 /* Assets.xcassets */; };
 		50C7EEA4301BD34000BA6EE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C7EE64301BD34000BA6EE0 /* Assets.xcassets */; };
 		50C7EEA5301BD34000BA6EE0 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C7EE66301BD34000BA6EE0 /* SafariWebExtensionHandler.swift */; };
@@ -53,6 +42,8 @@
 		50C7EED9301BD34100BA6EE0 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 50C7EEC1301BD34100BA6EE0 /* assets */; };
 		50C7EEDA301BD34100BA6EE0 /* icon-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 50C7EEC2301BD34100BA6EE0 /* icon-128.png */; };
 		50C7EEDB301BD34100BA6EE0 /* icon-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 50C7EEC3301BD34100BA6EE0 /* icon-512.png */; };
+		D7117905301BEC6900A0CF18 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7117904301BEC6900A0CF18 /* ContentView.swift */; };
+		D7117906301BEC6900A0CF18 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7117904301BEC6900A0CF18 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,18 +89,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		50C7EE5F301BD34000BA6EE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Main.html; sourceTree = "<group>"; };
-		50C7EE60301BD34000BA6EE0 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		50C7EE61301BD34000BA6EE0 /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
-		50C7EE62301BD34000BA6EE0 /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
-		50C7EE63301BD34000BA6EE0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		50C7EE64301BD34000BA6EE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50C7EE66301BD34000BA6EE0 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
 		50C7EE6B301BD34000BA6EE0 /* QIS Plus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QIS Plus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C7EE6E301BD34000BA6EE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50C7EE70301BD34000BA6EE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		50C7EE73301BD34000BA6EE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		50C7EE76301BD34000BA6EE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		50C7EE78301BD34000BA6EE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50C7EE7D301BD34000BA6EE0 /* QIS Plus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QIS Plus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C7EE7F301BD34000BA6EE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +116,7 @@
 		50C7EEC1301BD34100BA6EE0 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = "../../../extension/.output/safari-mv2/assets"; sourceTree = "<group>"; };
 		50C7EEC2301BD34100BA6EE0 /* icon-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-128.png"; path = "../../../extension/.output/safari-mv2/icon-128.png"; sourceTree = "<group>"; };
 		50C7EEC3301BD34100BA6EE0 /* icon-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-512.png"; path = "../../../extension/.output/safari-mv2/icon-512.png"; sourceTree = "<group>"; };
+		D7117904301BEC6900A0CF18 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,9 +167,9 @@
 		50C7EE5C301BD34000BA6EE0 /* Shared (App) */ = {
 			isa = PBXGroup;
 			children = (
-				50C7EE63301BD34000BA6EE0 /* ViewController.swift */,
 				50C7EE64301BD34000BA6EE0 /* Assets.xcassets */,
 				50C7EE5D301BD34000BA6EE0 /* Resources */,
+				D7117904301BEC6900A0CF18 /* ContentView.swift */,
 			);
 			path = "Shared (App)";
 			sourceTree = "<group>";
@@ -191,10 +177,6 @@
 		50C7EE5D301BD34000BA6EE0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				50C7EE5E301BD34000BA6EE0 /* Main.html */,
-				50C7EE60301BD34000BA6EE0 /* Icon.png */,
-				50C7EE61301BD34000BA6EE0 /* Style.css */,
-				50C7EE62301BD34000BA6EE0 /* Script.js */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -225,7 +207,6 @@
 				50C7EE6E301BD34000BA6EE0 /* AppDelegate.swift */,
 				50C7EE70301BD34000BA6EE0 /* SceneDelegate.swift */,
 				50C7EE72301BD34000BA6EE0 /* LaunchScreen.storyboard */,
-				50C7EE75301BD34000BA6EE0 /* Main.storyboard */,
 				50C7EE78301BD34000BA6EE0 /* Info.plist */,
 			);
 			path = "iOS (App)";
@@ -411,13 +392,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50C7EE9B301BD34000BA6EE0 /* Icon.png in Resources */,
 				50C7EE74301BD34000BA6EE0 /* LaunchScreen.storyboard in Resources */,
-				50C7EE99301BD34000BA6EE0 /* Main.html in Resources */,
-				50C7EE9F301BD34000BA6EE0 /* Script.js in Resources */,
 				50C7EEA3301BD34000BA6EE0 /* Assets.xcassets in Resources */,
-				50C7EE77301BD34000BA6EE0 /* Main.storyboard in Resources */,
-				50C7EE9D301BD34000BA6EE0 /* Style.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,12 +401,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50C7EE9C301BD34000BA6EE0 /* Icon.png in Resources */,
-				50C7EE9E301BD34000BA6EE0 /* Style.css in Resources */,
 				50C7EE83301BD34000BA6EE0 /* Main.storyboard in Resources */,
-				50C7EEA0301BD34000BA6EE0 /* Script.js in Resources */,
 				50C7EEA4301BD34000BA6EE0 /* Assets.xcassets in Resources */,
-				50C7EE9A301BD34000BA6EE0 /* Main.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,8 +451,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50C7EEA1301BD34000BA6EE0 /* ViewController.swift in Sources */,
 				50C7EE6F301BD34000BA6EE0 /* AppDelegate.swift in Sources */,
+				D7117906301BEC6900A0CF18 /* ContentView.swift in Sources */,
 				50C7EE71301BD34000BA6EE0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -489,8 +461,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50C7EEA2301BD34000BA6EE0 /* ViewController.swift in Sources */,
 				50C7EE80301BD34000BA6EE0 /* AppDelegate.swift in Sources */,
+				D7117905301BEC6900A0CF18 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,28 +498,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		50C7EE5E301BD34000BA6EE0 /* Main.html */ = {
-			isa = PBXVariantGroup;
-			children = (
-				50C7EE5F301BD34000BA6EE0 /* Base */,
-			);
-			name = Main.html;
-			sourceTree = "<group>";
-		};
 		50C7EE72301BD34000BA6EE0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				50C7EE73301BD34000BA6EE0 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		50C7EE75301BD34000BA6EE0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				50C7EE76301BD34000BA6EE0 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		50C7EE81301BD34000BA6EE0 /* Main.storyboard */ = {
@@ -680,6 +636,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MA9GS6W4GX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "QIS Plus Extension";
@@ -713,6 +670,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MA9GS6W4GX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "QIS Plus Extension";
@@ -749,12 +707,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MA9GS6W4GX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS (App)/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "QIS Plus";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -789,12 +748,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MA9GS6W4GX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS (App)/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "QIS Plus";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -826,11 +786,18 @@
 		50C7EEB1301BD34000BA6EE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				AUTOMATION_APPLE_EVENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MA9GS6W4GX;
 				ENABLE_APP_SANDBOX = YES;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
+				ENABLE_HARDENED_RUNTIME = NO;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "QIS Plus Extension";
@@ -840,7 +807,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -848,6 +815,12 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "app.maxsauerwein.extensions.qis-plus.Extension";
 				PRODUCT_NAME = "QIS Plus Extension";
+				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
+				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
+				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
+				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
+				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
+				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -861,11 +834,18 @@
 		50C7EEB2301BD34000BA6EE0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				AUTOMATION_APPLE_EVENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MA9GS6W4GX;
 				ENABLE_APP_SANDBOX = YES;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
+				ENABLE_HARDENED_RUNTIME = NO;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "QIS Plus Extension";
@@ -875,7 +855,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -883,6 +863,12 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "app.maxsauerwein.extensions.qis-plus.Extension";
 				PRODUCT_NAME = "QIS Plus Extension";
+				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
+				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
+				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
+				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
+				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
+				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -898,22 +884,29 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				AUTOMATION_APPLE_EVENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MA9GS6W4GX;
 				ENABLE_APP_SANDBOX = YES;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
+				ENABLE_HARDENED_RUNTIME = NO;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "macOS (App)/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "QIS Plus";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -924,6 +917,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "app.maxsauerwein.extensions.qis-plus";
 				PRODUCT_NAME = "QIS Plus";
 				REGISTER_APP_GROUPS = YES;
+				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
+				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
+				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
+				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
+				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
+				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
 				SDKROOT = macosx;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -939,22 +938,29 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				AUTOMATION_APPLE_EVENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MA9GS6W4GX;
 				ENABLE_APP_SANDBOX = YES;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
+				ENABLE_HARDENED_RUNTIME = NO;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "macOS (App)/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "QIS Plus";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -965,6 +971,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "app.maxsauerwein.extensions.qis-plus";
 				PRODUCT_NAME = "QIS Plus";
 				REGISTER_APP_GROUPS = YES;
+				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
+				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
+				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
+				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
+				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
+				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
 				SDKROOT = macosx;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;

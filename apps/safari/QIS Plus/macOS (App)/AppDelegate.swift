@@ -6,12 +6,18 @@
 //
 
 import Cocoa
+import SwiftUI
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        // Override point for customization after application launch.
+        // Ersetzt den Storyboard-Platzhalter durch den SwiftUI-Screen.
+        if let window = NSApp.windows.first {
+            window.contentViewController = NSHostingController(rootView: ContentView())
+            window.setContentSize(NSSize(width: 500, height: 760))
+            window.center()
+        }
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {

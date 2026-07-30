@@ -7,7 +7,47 @@
     <title>QIS+ Einstellungen</title>
   </head>
   <body>
-    <div id="app"></div>
+    <h1>QIS+</h1>
+
+    <section>
+      <h2>Anzeige</h2>
+      <label class="checkbox">
+        <input type="checkbox" id="hide-completed-details" />
+        Detailzeilen bestandener Module ausblenden
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" id="show-only-last-attempt" />
+        Nur letzten Prüfungsversuch anzeigen
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" id="hide-studienleistungen" />
+        Zeilen mit Studienleistung ausblenden
+      </label>
+    </section>
+
+    <section>
+      <h2>Notenschnitt berechnen aus</h2>
+      <select id="avg-mode">
+        <option value="all">allen bestandenen Versuchen</option>
+        <option value="last">nur dem letzten Versuch</option>
+        <option value="best">nur der besten Note</option>
+      </select>
+    </section>
+
+    <section>
+      <h2>Spalten anzeigen</h2>
+      <div id="column-list"></div>
+      <p class="hint" id="column-hint" hidden>Öffne einmal den Notenspiegel, damit die Spalten hier erscheinen.</p>
+    </section>
+
+    <section>
+      <h2>Farben</h2>
+      <div id="color-list"></div>
+      <button type="button" id="reset-colors">Standardfarben wiederherstellen</button>
+    </section>
+
+    <p class="hint">Änderungen wirken nach dem Neuladen der QIS-Seite.</p>
+
     <script type="module" src="./main.js"></script>
   </body>
 </html>

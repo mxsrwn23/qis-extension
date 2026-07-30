@@ -1,1 +1,70 @@
-/* TODO: migrate content.css */
+/* QIS+ Statusfarben für die Notenübersicht.
+   Standardfarben zentral hier — das Popup überschreibt sie bei Bedarf über die
+   CSS-Variablen (--qisplus-*). JS setzt nur Klassen/Variablen, keine Farben.
+   Muss mit DEFAULT_COLORS in utils/settings.js übereinstimmen. */
+:root {
+  --qisplus-be: #34c759;       /* bestanden */
+  --qisplus-pv: #ff9500;       /* Prüfungen vorhanden, noch nicht bestanden (offen/in Arbeit) */
+  --qisplus-fail: #ff3b30;     /* nicht bestanden / endgültig nicht bestanden */
+  --qisplus-an: #007aff;       /* angemeldet, Ergebnis steht noch aus */
+  --qisplus-wait: #af52de;     /* Prüfung geschrieben, Ergebnis steht noch aus */
+  --qisplus-section: #8e8e93;  /* Kern-/Pflicht-/Wahlpflichtmodule Trennzeile */
+}
+
+/* Badge-Optik: getönter Hintergrund + kräftige Akzentfarbe als Text.
+   color-mix leitet beide Töne aus EINER Akzentfarbe ab, damit im Popup ein
+   Farbwähler pro Status genügt.
+   QIS selbst ist immer hell dargestellt, daher kein prefers-color-scheme-Zweig. */
+.qisplus-status--be   { --_qisplus-accent: var(--qisplus-be); }
+.qisplus-status--pv   { --_qisplus-accent: var(--qisplus-pv); }
+.qisplus-status--fail { --_qisplus-accent: var(--qisplus-fail); }
+.qisplus-status--an   { --_qisplus-accent: var(--qisplus-an); }
+.qisplus-status--wait { --_qisplus-accent: var(--qisplus-wait); }
+
+.qisplus-status--be,
+.qisplus-status--pv,
+.qisplus-status--fail,
+.qisplus-status--an,
+.qisplus-status--wait {
+  font-weight: 600;
+  color: color-mix(in srgb, var(--_qisplus-accent) 78%, #111111) !important;
+  background-color: color-mix(in srgb, var(--_qisplus-accent) 22%, transparent) !important;
+  /* farbiger Balken links — als Inset-Schatten, damit sich das Layout nicht verschiebt */
+  box-shadow: inset 3px 0 0 var(--_qisplus-accent);
+}
+
+.qisplus-status--section {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--qisplus-section) 55%, #1a1a1a) !important;
+  background-color: color-mix(in srgb, var(--qisplus-section) 15%, transparent) !important;
+}
+
+/* Etwas mehr Luft in den Zeilen der Notentabelle, damit sie leichter zu
+   unterscheiden sind. Die Klasse setzt das Content-Script auf die Tabelle. */
+.qisplus-table th,
+.qisplus-table td {
+  padding: 6px 8px !important;
+  line-height: 1.45;
+  vertical-align: middle;
+}
+
+/* "NEU"-Badge für frisch eingetragene Ergebnisse */
+.qisplus-badge-new {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 6px 2px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  vertical-align: middle;
+  color: #ffffff;
+  background-color: #ff2d55;
+}
+
+/* Prüfungsanmeldung: bereits bestandene Konten im Baum markieren */
+.qisplus-course--completed {
+  color: color-mix(in srgb, var(--qisplus-be) 70%, #111111) !important;
+  font-weight: 600;
+}

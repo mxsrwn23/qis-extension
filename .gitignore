@@ -3,6 +3,7 @@ node_modules
 .wxt
 .turbo
 *.log
+.DS_Store
 
 # Xcode (apps/safari, once generated)
 xcuserdata/

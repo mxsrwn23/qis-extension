@@ -1,1 +1,157 @@
-/* TODO: migrate layout.css */
+/*
+ * QIS+ Layout
+ *
+ * Einzige Aufgabe: die Notenspiegel-Tabelle zur Laufzeit erkennen und
+ * sperren (data-qisplus-locked), damit dieses Stylesheet sie über
+ * @scope(...)to([data-qisplus-locked]) niemals erreichen kann — unabhängig
+ * von Session-spezifischen URL-Parametern. Läuft als eigener Content-Script-
+ * Entrypoint, unabhängig von qis-content, der die Notentabelle selbst
+ * gestaltet (Statusfarben, Notenschnitt, Badges).
+ *
+ * Läuft bei run_at "document_end" und damit vor qis-content
+ * (document_idle) — die Notentabelle wird also gesperrt, bevor
+ * qis-content sie umbaut.
+ */
+
+@scope (body) to ([data-qisplus-locked]) {
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* Feste Breiten des Original-Layouts durch flexible ersetzen, damit die
+     Seite auf schmalen (iPhone/iPad) UND breiten (Mac-Vollbild) Screens
+     vernünftig aussieht, statt an einer festen Pixelbreite zu kleben. */
+  #wrapper {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 clamp(12px, 3vw, 32px);
+  }
+
+  img,
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ---------- Kopfbereich ---------- */
+
+  .header_hisinone {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .divloginstatus {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 6px;
+  }
+
+  /* Touch-Targets vergrößern, ohne Farbe/Hintergrund/Schrift anzufassen */
+  .divloginstatus a.links3,
+  .divlinks a.links2visited,
+  .divfoot_navigation a.links3 {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 8px;
+  }
+
+  /* ---------- Breadcrumb ---------- */
+
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .breadcrumb a.regular,
+  .breadcrumb strong {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+  }
+
+  /* ---------- Funktionsmenü (#makronavigation) ---------- */
+  /* Bleiben normale Links im Original-Look — nur umbruchfähig statt
+     starr, mit genug Fläche und Abstand für Touch. */
+
+  #makronavigation ul.menue {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  #makronavigation ul.menue li {
+    list-style: none;
+  }
+
+  #makronavigation a.auflistung {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 6px 4px;
+  }
+
+  /* ---------- Baum-Navigation (Prüfungsauswahl, Notenspiegel-Auswahl, ...) ---------- */
+
+  ul.treelist {
+    padding-left: 20px;
+  }
+
+  ul.treelist:first-of-type {
+    padding-left: 0;
+  }
+
+  li.treelist {
+    margin: 2px 0;
+  }
+
+  li.treelist > a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 2px 6px;
+  }
+
+  li.treelist > img {
+    vertical-align: middle;
+  }
+
+  /* ---------- Generische Tabellen (NICHT die Notentabelle) ----------
+     Nur Breite/Umbruchverhalten, keine Farben. Instanzen innerhalb von
+     [data-qisplus-locked] werden durch die @scope-Grenze übersprungen. */
+
+  table {
+    max-width: 100%;
+  }
+
+  @media (max-width: 640px) {
+    table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      white-space: nowrap;
+    }
+  }
+
+  /* ---------- Mobile ---------- */
+
+  @media (max-width: 600px) {
+    #wrapper {
+      padding: 0 12px;
+    }
+  }
+
+} /* Ende @scope */

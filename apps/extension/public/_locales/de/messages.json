@@ -1,0 +1,10 @@
+{
+    "extension_name": {
+        "message": "QIS+",
+        "description": "Der Anzeigename der Erweiterung."
+    },
+    "extension_description": {
+        "message": "Bereinigt und färbt die Notenübersicht im QIS-Portal der Hochschule Trier farblich ein.",
+        "description": "Beschreibung der Funktionen der Erweiterung."
+    }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "dev:firefox": {
+      "cache": false,
+      "persistent": true
+    },
+    "build": {
+      "outputs": [".output/**"]
+    },
+    "build:firefox": {
+      "outputs": [".output/**"]
+    },
+    "build:safari": {
+      "outputs": [".output/**"]
+    },
+    "zip": {
+      "dependsOn": ["build"],
+      "outputs": [".output/**"]
+    },
+    "zip:firefox": {
+      "dependsOn": ["build:firefox"],
+      "outputs": [".output/**"]
+    }
+  }
+}

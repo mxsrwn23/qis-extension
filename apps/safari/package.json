@@ -1,0 +1,9 @@
+{
+  "name": "safari",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "pnpm --filter extension build:safari",
+    "convert": "xcrun safari-web-extension-converter ../extension/.output/safari-mv3 --project-location . --app-name \"QIS Plus\" --bundle-identifier app.maxsauerwein.extensions.qis-plus --swift --no-open --force"
+  }
+}

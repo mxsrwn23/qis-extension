@@ -1,0 +1,10 @@
+node_modules
+.output
+.wxt
+.turbo
+*.log
+
+# Xcode (apps/safari, once generated)
+xcuserdata/
+DerivedData/
+*.xcodeproj/project.xcworkspace/xcuserdata/

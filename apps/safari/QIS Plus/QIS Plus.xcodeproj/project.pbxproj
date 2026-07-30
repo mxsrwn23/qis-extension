@@ -1,0 +1,1011 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		50C70D39301BC26E001628DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C70D38301BC26E001628DA /* AppDelegate.swift */; };
+		50C70D3B301BC26E001628DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C70D3A301BC26E001628DA /* SceneDelegate.swift */; };
+		50C70D3E301BC26E001628DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D3C301BC26E001628DA /* LaunchScreen.storyboard */; };
+		50C70D41301BC26E001628DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D3F301BC26E001628DA /* Main.storyboard */; };
+		50C70D4A301BC26E001628DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C70D49301BC26E001628DA /* AppDelegate.swift */; };
+		50C70D4D301BC26E001628DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D4B301BC26E001628DA /* Main.storyboard */; };
+		50C70D54301BC26E001628DA /* QIS Plus Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 50C70D53301BC26E001628DA /* QIS Plus Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		50C70D5E301BC26E001628DA /* QIS Plus Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 50C70D5D301BC26E001628DA /* QIS Plus Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		50C70D63301BC26E001628DA /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D28301BC26D001628DA /* Main.html */; };
+		50C70D64301BC26E001628DA /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D28301BC26D001628DA /* Main.html */; };
+		50C70D65301BC26E001628DA /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D2A301BC26D001628DA /* Icon.png */; };
+		50C70D66301BC26E001628DA /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D2A301BC26D001628DA /* Icon.png */; };
+		50C70D67301BC26E001628DA /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D2B301BC26D001628DA /* Style.css */; };
+		50C70D68301BC26E001628DA /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D2B301BC26D001628DA /* Style.css */; };
+		50C70D69301BC26E001628DA /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D2C301BC26D001628DA /* Script.js */; };
+		50C70D6A301BC26E001628DA /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D2C301BC26D001628DA /* Script.js */; };
+		50C70D6B301BC26E001628DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C70D2D301BC26D001628DA /* ViewController.swift */; };
+		50C70D6C301BC26E001628DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C70D2D301BC26D001628DA /* ViewController.swift */; };
+		50C70D6D301BC26E001628DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D2E301BC26E001628DA /* Assets.xcassets */; };
+		50C70D6E301BC26E001628DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D2E301BC26E001628DA /* Assets.xcassets */; };
+		50C70D6F301BC26E001628DA /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C70D30301BC26E001628DA /* SafariWebExtensionHandler.swift */; };
+		50C70D70301BC26E001628DA /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C70D30301BC26E001628DA /* SafariWebExtensionHandler.swift */; };
+		50C70D8B301BC26E001628DA /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D82301BC26E001628DA /* background.js */; };
+		50C70D8C301BC26E001628DA /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D83301BC26E001628DA /* popup.html */; };
+		50C70D8D301BC26E001628DA /* icon-48.png in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D84301BC26E001628DA /* icon-48.png */; };
+		50C70D8E301BC26E001628DA /* chunks in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D85301BC26E001628DA /* chunks */; };
+		50C70D8F301BC26E001628DA /* icon-96.png in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D86301BC26E001628DA /* icon-96.png */; };
+		50C70D90301BC26E001628DA /* content-scripts in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D87301BC26E001628DA /* content-scripts */; };
+		50C70D91301BC26E001628DA /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D88301BC26E001628DA /* manifest.json */; };
+		50C70D92301BC26E001628DA /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D89301BC26E001628DA /* assets */; };
+		50C70D93301BC26E001628DA /* icon-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D8A301BC26E001628DA /* icon-128.png */; };
+		50C70D94301BC26E001628DA /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D82301BC26E001628DA /* background.js */; };
+		50C70D95301BC26E001628DA /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D83301BC26E001628DA /* popup.html */; };
+		50C70D96301BC26E001628DA /* icon-48.png in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D84301BC26E001628DA /* icon-48.png */; };
+		50C70D97301BC26E001628DA /* chunks in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D85301BC26E001628DA /* chunks */; };
+		50C70D98301BC26E001628DA /* icon-96.png in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D86301BC26E001628DA /* icon-96.png */; };
+		50C70D99301BC26E001628DA /* content-scripts in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D87301BC26E001628DA /* content-scripts */; };
+		50C70D9A301BC26E001628DA /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D88301BC26E001628DA /* manifest.json */; };
+		50C70D9B301BC26E001628DA /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D89301BC26E001628DA /* assets */; };
+		50C70D9C301BC26E001628DA /* icon-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 50C70D8A301BC26E001628DA /* icon-128.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		50C70D55301BC26E001628DA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C70D22301BC26D001628DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50C70D52301BC26E001628DA;
+			remoteInfo = "QIS Plus Extension (iOS)";
+		};
+		50C70D5F301BC26E001628DA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C70D22301BC26D001628DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50C70D5C301BC26E001628DA;
+			remoteInfo = "QIS Plus Extension (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		50C70D76301BC26E001628DA /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				50C70D54301BC26E001628DA /* QIS Plus Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50C70D7D301BC26E001628DA /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				50C70D5E301BC26E001628DA /* QIS Plus Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		50C70D29301BC26D001628DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Main.html; sourceTree = "<group>"; };
+		50C70D2A301BC26D001628DA /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		50C70D2B301BC26D001628DA /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		50C70D2C301BC26D001628DA /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		50C70D2D301BC26D001628DA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		50C70D2E301BC26E001628DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		50C70D30301BC26E001628DA /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		50C70D35301BC26E001628DA /* QIS Plus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QIS Plus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50C70D38301BC26E001628DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		50C70D3A301BC26E001628DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		50C70D3D301BC26E001628DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		50C70D40301BC26E001628DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		50C70D42301BC26E001628DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50C70D47301BC26E001628DA /* QIS Plus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QIS Plus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50C70D49301BC26E001628DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		50C70D4C301BC26E001628DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		50C70D4E301BC26E001628DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50C70D53301BC26E001628DA /* QIS Plus Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "QIS Plus Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50C70D58301BC26E001628DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50C70D5D301BC26E001628DA /* QIS Plus Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "QIS Plus Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50C70D62301BC26E001628DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50C70D82301BC26E001628DA /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = background.js; path = "../../../extension/.output/safari-mv2/background.js"; sourceTree = "<group>"; };
+		50C70D83301BC26E001628DA /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = popup.html; path = "../../../extension/.output/safari-mv2/popup.html"; sourceTree = "<group>"; };
+		50C70D84301BC26E001628DA /* icon-48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-48.png"; path = "../../../extension/.output/safari-mv2/icon-48.png"; sourceTree = "<group>"; };
+		50C70D85301BC26E001628DA /* chunks */ = {isa = PBXFileReference; lastKnownFileType = folder; name = chunks; path = "../../../extension/.output/safari-mv2/chunks"; sourceTree = "<group>"; };
+		50C70D86301BC26E001628DA /* icon-96.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-96.png"; path = "../../../extension/.output/safari-mv2/icon-96.png"; sourceTree = "<group>"; };
+		50C70D87301BC26E001628DA /* content-scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "content-scripts"; path = "../../../extension/.output/safari-mv2/content-scripts"; sourceTree = "<group>"; };
+		50C70D88301BC26E001628DA /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = "../../../extension/.output/safari-mv2/manifest.json"; sourceTree = "<group>"; };
+		50C70D89301BC26E001628DA /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = "../../../extension/.output/safari-mv2/assets"; sourceTree = "<group>"; };
+		50C70D8A301BC26E001628DA /* icon-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-128.png"; path = "../../../extension/.output/safari-mv2/icon-128.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		50C70D32301BC26E001628DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50C70D44301BC26E001628DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50C70D50301BC26E001628DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50C70D5A301BC26E001628DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		50C70D21301BC26D001628DA = {
+			isa = PBXGroup;
+			children = (
+				50C70D26301BC26D001628DA /* Shared (App) */,
+				50C70D2F301BC26E001628DA /* Shared (Extension) */,
+				50C70D37301BC26E001628DA /* iOS (App) */,
+				50C70D48301BC26E001628DA /* macOS (App) */,
+				50C70D57301BC26E001628DA /* iOS (Extension) */,
+				50C70D61301BC26E001628DA /* macOS (Extension) */,
+				50C70D36301BC26E001628DA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		50C70D26301BC26D001628DA /* Shared (App) */ = {
+			isa = PBXGroup;
+			children = (
+				50C70D2D301BC26D001628DA /* ViewController.swift */,
+				50C70D2E301BC26E001628DA /* Assets.xcassets */,
+				50C70D27301BC26D001628DA /* Resources */,
+			);
+			path = "Shared (App)";
+			sourceTree = "<group>";
+		};
+		50C70D27301BC26D001628DA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				50C70D28301BC26D001628DA /* Main.html */,
+				50C70D2A301BC26D001628DA /* Icon.png */,
+				50C70D2B301BC26D001628DA /* Style.css */,
+				50C70D2C301BC26D001628DA /* Script.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		50C70D2F301BC26E001628DA /* Shared (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				50C70D81301BC26E001628DA /* Resources */,
+				50C70D30301BC26E001628DA /* SafariWebExtensionHandler.swift */,
+			);
+			path = "Shared (Extension)";
+			sourceTree = "<group>";
+		};
+		50C70D36301BC26E001628DA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				50C70D35301BC26E001628DA /* QIS Plus.app */,
+				50C70D47301BC26E001628DA /* QIS Plus.app */,
+				50C70D53301BC26E001628DA /* QIS Plus Extension.appex */,
+				50C70D5D301BC26E001628DA /* QIS Plus Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		50C70D37301BC26E001628DA /* iOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				50C70D38301BC26E001628DA /* AppDelegate.swift */,
+				50C70D3A301BC26E001628DA /* SceneDelegate.swift */,
+				50C70D3C301BC26E001628DA /* LaunchScreen.storyboard */,
+				50C70D3F301BC26E001628DA /* Main.storyboard */,
+				50C70D42301BC26E001628DA /* Info.plist */,
+			);
+			path = "iOS (App)";
+			sourceTree = "<group>";
+		};
+		50C70D48301BC26E001628DA /* macOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				50C70D49301BC26E001628DA /* AppDelegate.swift */,
+				50C70D4B301BC26E001628DA /* Main.storyboard */,
+				50C70D4E301BC26E001628DA /* Info.plist */,
+			);
+			path = "macOS (App)";
+			sourceTree = "<group>";
+		};
+		50C70D57301BC26E001628DA /* iOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				50C70D58301BC26E001628DA /* Info.plist */,
+			);
+			path = "iOS (Extension)";
+			sourceTree = "<group>";
+		};
+		50C70D61301BC26E001628DA /* macOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				50C70D62301BC26E001628DA /* Info.plist */,
+			);
+			path = "macOS (Extension)";
+			sourceTree = "<group>";
+		};
+		50C70D81301BC26E001628DA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				50C70D82301BC26E001628DA /* background.js */,
+				50C70D83301BC26E001628DA /* popup.html */,
+				50C70D84301BC26E001628DA /* icon-48.png */,
+				50C70D85301BC26E001628DA /* chunks */,
+				50C70D86301BC26E001628DA /* icon-96.png */,
+				50C70D87301BC26E001628DA /* content-scripts */,
+				50C70D88301BC26E001628DA /* manifest.json */,
+				50C70D89301BC26E001628DA /* assets */,
+				50C70D8A301BC26E001628DA /* icon-128.png */,
+			);
+			name = Resources;
+			path = "Shared (Extension)";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		50C70D34301BC26E001628DA /* QIS Plus (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50C70D77301BC26E001628DA /* Build configuration list for PBXNativeTarget "QIS Plus (iOS)" */;
+			buildPhases = (
+				50C70D31301BC26E001628DA /* Sources */,
+				50C70D32301BC26E001628DA /* Frameworks */,
+				50C70D33301BC26E001628DA /* Resources */,
+				50C70D76301BC26E001628DA /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				50C70D56301BC26E001628DA /* PBXTargetDependency */,
+			);
+			name = "QIS Plus (iOS)";
+			packageProductDependencies = (
+			);
+			productName = "QIS Plus (iOS)";
+			productReference = 50C70D35301BC26E001628DA /* QIS Plus.app */;
+			productType = "com.apple.product-type.application";
+		};
+		50C70D46301BC26E001628DA /* QIS Plus (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50C70D7E301BC26E001628DA /* Build configuration list for PBXNativeTarget "QIS Plus (macOS)" */;
+			buildPhases = (
+				50C70D43301BC26E001628DA /* Sources */,
+				50C70D44301BC26E001628DA /* Frameworks */,
+				50C70D45301BC26E001628DA /* Resources */,
+				50C70D7D301BC26E001628DA /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				50C70D60301BC26E001628DA /* PBXTargetDependency */,
+			);
+			name = "QIS Plus (macOS)";
+			packageProductDependencies = (
+			);
+			productName = "QIS Plus (macOS)";
+			productReference = 50C70D47301BC26E001628DA /* QIS Plus.app */;
+			productType = "com.apple.product-type.application";
+		};
+		50C70D52301BC26E001628DA /* QIS Plus Extension (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50C70D73301BC26E001628DA /* Build configuration list for PBXNativeTarget "QIS Plus Extension (iOS)" */;
+			buildPhases = (
+				50C70D4F301BC26E001628DA /* Sources */,
+				50C70D50301BC26E001628DA /* Frameworks */,
+				50C70D51301BC26E001628DA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "QIS Plus Extension (iOS)";
+			packageProductDependencies = (
+			);
+			productName = "QIS Plus Extension (iOS)";
+			productReference = 50C70D53301BC26E001628DA /* QIS Plus Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		50C70D5C301BC26E001628DA /* QIS Plus Extension (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50C70D7A301BC26E001628DA /* Build configuration list for PBXNativeTarget "QIS Plus Extension (macOS)" */;
+			buildPhases = (
+				50C70D59301BC26E001628DA /* Sources */,
+				50C70D5A301BC26E001628DA /* Frameworks */,
+				50C70D5B301BC26E001628DA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "QIS Plus Extension (macOS)";
+			packageProductDependencies = (
+			);
+			productName = "QIS Plus Extension (macOS)";
+			productReference = 50C70D5D301BC26E001628DA /* QIS Plus Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		50C70D22301BC26D001628DA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2660;
+				LastUpgradeCheck = 2660;
+				TargetAttributes = {
+					50C70D34301BC26E001628DA = {
+						CreatedOnToolsVersion = 26.6;
+					};
+					50C70D46301BC26E001628DA = {
+						CreatedOnToolsVersion = 26.6;
+					};
+					50C70D52301BC26E001628DA = {
+						CreatedOnToolsVersion = 26.6;
+					};
+					50C70D5C301BC26E001628DA = {
+						CreatedOnToolsVersion = 26.6;
+					};
+				};
+			};
+			buildConfigurationList = 50C70D25301BC26D001628DA /* Build configuration list for PBXProject "QIS Plus" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 50C70D21301BC26D001628DA;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 50C70D36301BC26E001628DA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				50C70D34301BC26E001628DA /* QIS Plus (iOS) */,
+				50C70D46301BC26E001628DA /* QIS Plus (macOS) */,
+				50C70D52301BC26E001628DA /* QIS Plus Extension (iOS) */,
+				50C70D5C301BC26E001628DA /* QIS Plus Extension (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		50C70D33301BC26E001628DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50C70D65301BC26E001628DA /* Icon.png in Resources */,
+				50C70D3E301BC26E001628DA /* LaunchScreen.storyboard in Resources */,
+				50C70D63301BC26E001628DA /* Main.html in Resources */,
+				50C70D69301BC26E001628DA /* Script.js in Resources */,
+				50C70D6D301BC26E001628DA /* Assets.xcassets in Resources */,
+				50C70D41301BC26E001628DA /* Main.storyboard in Resources */,
+				50C70D67301BC26E001628DA /* Style.css in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50C70D45301BC26E001628DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50C70D66301BC26E001628DA /* Icon.png in Resources */,
+				50C70D68301BC26E001628DA /* Style.css in Resources */,
+				50C70D4D301BC26E001628DA /* Main.storyboard in Resources */,
+				50C70D6A301BC26E001628DA /* Script.js in Resources */,
+				50C70D6E301BC26E001628DA /* Assets.xcassets in Resources */,
+				50C70D64301BC26E001628DA /* Main.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50C70D51301BC26E001628DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50C70D94301BC26E001628DA /* background.js in Resources */,
+				50C70D9B301BC26E001628DA /* assets in Resources */,
+				50C70D9C301BC26E001628DA /* icon-128.png in Resources */,
+				50C70D9A301BC26E001628DA /* manifest.json in Resources */,
+				50C70D99301BC26E001628DA /* content-scripts in Resources */,
+				50C70D95301BC26E001628DA /* popup.html in Resources */,
+				50C70D98301BC26E001628DA /* icon-96.png in Resources */,
+				50C70D97301BC26E001628DA /* chunks in Resources */,
+				50C70D96301BC26E001628DA /* icon-48.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50C70D5B301BC26E001628DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50C70D8B301BC26E001628DA /* background.js in Resources */,
+				50C70D92301BC26E001628DA /* assets in Resources */,
+				50C70D93301BC26E001628DA /* icon-128.png in Resources */,
+				50C70D91301BC26E001628DA /* manifest.json in Resources */,
+				50C70D90301BC26E001628DA /* content-scripts in Resources */,
+				50C70D8C301BC26E001628DA /* popup.html in Resources */,
+				50C70D8F301BC26E001628DA /* icon-96.png in Resources */,
+				50C70D8E301BC26E001628DA /* chunks in Resources */,
+				50C70D8D301BC26E001628DA /* icon-48.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		50C70D31301BC26E001628DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50C70D6B301BC26E001628DA /* ViewController.swift in Sources */,
+				50C70D39301BC26E001628DA /* AppDelegate.swift in Sources */,
+				50C70D3B301BC26E001628DA /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50C70D43301BC26E001628DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50C70D6C301BC26E001628DA /* ViewController.swift in Sources */,
+				50C70D4A301BC26E001628DA /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50C70D4F301BC26E001628DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50C70D6F301BC26E001628DA /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50C70D59301BC26E001628DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50C70D70301BC26E001628DA /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		50C70D56301BC26E001628DA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50C70D52301BC26E001628DA /* QIS Plus Extension (iOS) */;
+			targetProxy = 50C70D55301BC26E001628DA /* PBXContainerItemProxy */;
+		};
+		50C70D60301BC26E001628DA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50C70D5C301BC26E001628DA /* QIS Plus Extension (macOS) */;
+			targetProxy = 50C70D5F301BC26E001628DA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		50C70D28301BC26D001628DA /* Main.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				50C70D29301BC26D001628DA /* Base */,
+			);
+			name = Main.html;
+			sourceTree = "<group>";
+		};
+		50C70D3C301BC26E001628DA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				50C70D3D301BC26E001628DA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		50C70D3F301BC26E001628DA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				50C70D40301BC26E001628DA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		50C70D4B301BC26E001628DA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				50C70D4C301BC26E001628DA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		50C70D71301BC26E001628DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		50C70D72301BC26E001628DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		50C70D74301BC26E001628DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "QIS Plus Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "app.maxsauerwein.extensions.qis-plus.Extension";
+				PRODUCT_NAME = "QIS Plus Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		50C70D75301BC26E001628DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "QIS Plus Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "app.maxsauerwein.extensions.qis-plus.Extension";
+				PRODUCT_NAME = "QIS Plus Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		50C70D78301BC26E001628DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "QIS Plus";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "app.maxsauerwein.extensions.qis-plus";
+				PRODUCT_NAME = "QIS Plus";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		50C70D79301BC26E001628DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "QIS Plus";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "app.maxsauerwein.extensions.qis-plus";
+				PRODUCT_NAME = "QIS Plus";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		50C70D7B301BC26E001628DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "QIS Plus Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "app.maxsauerwein.extensions.qis-plus.Extension";
+				PRODUCT_NAME = "QIS Plus Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		50C70D7C301BC26E001628DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "QIS Plus Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "app.maxsauerwein.extensions.qis-plus.Extension";
+				PRODUCT_NAME = "QIS Plus Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		50C70D7F301BC26E001628DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "QIS Plus";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "app.maxsauerwein.extensions.qis-plus";
+				PRODUCT_NAME = "QIS Plus";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		50C70D80301BC26E001628DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "QIS Plus";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "app.maxsauerwein.extensions.qis-plus";
+				PRODUCT_NAME = "QIS Plus";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		50C70D25301BC26D001628DA /* Build configuration list for PBXProject "QIS Plus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50C70D71301BC26E001628DA /* Debug */,
+				50C70D72301BC26E001628DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50C70D73301BC26E001628DA /* Build configuration list for PBXNativeTarget "QIS Plus Extension (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50C70D74301BC26E001628DA /* Debug */,
+				50C70D75301BC26E001628DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50C70D77301BC26E001628DA /* Build configuration list for PBXNativeTarget "QIS Plus (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50C70D78301BC26E001628DA /* Debug */,
+				50C70D79301BC26E001628DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50C70D7A301BC26E001628DA /* Build configuration list for PBXNativeTarget "QIS Plus Extension (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50C70D7B301BC26E001628DA /* Debug */,
+				50C70D7C301BC26E001628DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50C70D7E301BC26E001628DA /* Build configuration list for PBXNativeTarget "QIS Plus (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50C70D7F301BC26E001628DA /* Debug */,
+				50C70D80301BC26E001628DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 50C70D22301BC26D001628DA /* Project object */;
+}

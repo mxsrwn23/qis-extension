@@ -3,6 +3,6 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "convert": "xcrun safari-web-extension-converter ../extension/.output/safari-mv3 --project-location . --app-name \"QIS Plus\" --bundle-identifier app.maxsauerwein.extensions.qis-plus --swift --no-open --force"
+    "convert": "xcrun safari-web-extension-converter ../extension/.output/safari-mv2 --project-location . --app-name \"QIS Plus\" --bundle-identifier app.maxsauerwein.extensions.qis-plus --swift --no-open --force"
   }
 }

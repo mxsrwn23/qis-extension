@@ -1,9 +1,9 @@
-import "./qis-layout.css";
+import "./style.css";
 
 export default defineContentScript({
   matches: ["*://qis.hochschule-trier.de/*"],
-  runAt: "document_end",
+  runAt: "document_idle",
   main() {
-    // TODO: migrate layout_script.js
+    // TODO: migrate content_script.js + settings.js
   },
 });

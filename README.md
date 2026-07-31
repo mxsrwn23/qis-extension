@@ -12,7 +12,10 @@
   ![Safari](https://img.shields.io/badge/Safari-16.4%2B-orange)
   ![License](https://img.shields.io/badge/License-MIT-green)
 
-  <a href='https://apps.apple.com/de/app/qis/id6790536583'><img width=190 alt='Get QIS+ for macOS' src='https://user-images.githubusercontent.com/24459435/172480858-f2631b6c-c56d-47d2-abe5-84f735edbe85.svg'/></a>
+  <div align="center">
+  <a href='https://apps.apple.com/de/app/qis/id6790536583'><img height='56' alt='Im App Store laden' src='apps/extension/public/badges/appstore.svg'/></a>
+  <!--<a href='https://chromewebstore.google.com/detail/DEINE_EXTENSION_ID'><img height='56' alt='Im Chrome Web Store' src='apps/extension/public/badges/chrome.png'/></a>
+  <a href='https://addons.mozilla.org/de/firefox/addon/DEIN_ADDON_SLUG/'><img height='56' alt='Für Firefox herunterladen' src='apps/extension/public/badges/firefox.svg'/></a>-->
 </div>
 
 ---

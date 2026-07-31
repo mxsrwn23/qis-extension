@@ -2,7 +2,7 @@ import { defineConfig } from "wxt";
 
 export default defineConfig({
   srcDir: ".",
-  manifest: {
+  manifest: ({ browser }) => ({
     name: "__MSG_extension_name__",
     description: "__MSG_extension_description__",
     default_locale: "de",
@@ -15,5 +15,16 @@ export default defineConfig({
       256: "icon-256.png",
       512: "icon-512.png",
     },
-  },
+    ...(browser === "firefox" && {
+      version: "1.0.1",
+      browser_specific_settings: {
+        gecko: {
+          id: "qis-extension@mxsrwn23.github.io",
+          data_collection_permissions: {
+            required: ["none"],
+          },
+        },
+      },
+    }),
+  }),
 });

@@ -1,10 +1,19 @@
 /* QIS+ Popup — schlicht, folgt hell/dunkel automatisch via color-scheme */
+/* Firefox berechnet die Popup-Größe anhand der Layout-Breite von <body>. Ohne
+   feste width (nur min-width) reflowed Firefox das Popup fehlerhaft, sobald
+   Inhalte nach dem initialen Rendern per JS ergänzt werden (Spalten/Farben). */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
     font-family: -apple-system, system-ui, sans-serif;
     font-size: 13px;
     margin: 0;
     padding: 12px 16px 8px;
-    min-width: 280px;
+    width: 320px;
 }
 
 h1 {

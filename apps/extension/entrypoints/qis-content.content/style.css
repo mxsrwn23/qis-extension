@@ -1170,6 +1170,110 @@ td.mod_n_basic {
 }
 
 /* -------------------------------------------------------------------------
+   Lade-Overlay für den Notentabelle-Schnellzugriff (siehe index.js
+   showAutoGradesOverlay) — deckt den Durchklick-Flicker der automatischen
+   Zwischenschritte (Prüfungsverwaltung → Notenspiegel → Abschluss) ab.
+   ------------------------------------------------------------------------- */
+
+#qis-plus-auto-grades-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--qis-space-4);
+  background: var(--qis-bg);
+}
+
+.qis-auto-grades-spinner {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 3px solid var(--qis-border);
+  border-top-color: var(--qis-blue);
+  animation: qis-auto-grades-spin 800ms linear infinite;
+}
+
+@keyframes qis-auto-grades-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.qis-auto-grades-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--qis-text-muted);
+}
+
+/* -------------------------------------------------------------------------
+   Schnellzugriff ("Meine Funktionen" — siehe index.js enhanceFunctionsOverview)
+   ------------------------------------------------------------------------- */
+
+.qis-quicklinks {
+  background: var(--qis-bg);
+  border: 1px solid var(--qis-border);
+  border-radius: var(--qis-radius);
+  padding: var(--qis-space-4);
+  margin: var(--qis-space-5) 0;
+}
+
+.qis-quicklinks-title {
+  font-size: 0.72rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--qis-text-muted);
+  margin-bottom: var(--qis-space-3);
+}
+
+.qis-quicklinks-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--qis-space-2);
+}
+
+.qis-quicklink-btn {
+  background: linear-gradient(135deg, var(--qis-blue) 0%, var(--qis-navy) 100%);
+  color: #fff;
+}
+
+.qis-quicklink-btn:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.qis-quicklinks-status {
+  font-size: 0.85rem;
+  color: var(--qis-text-muted);
+  margin-top: var(--qis-space-2);
+}
+
+.qis-quicklinks-status:empty {
+  display: none;
+}
+
+.qis-quicklinks-chooser {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--qis-space-2);
+  margin-top: var(--qis-space-2);
+}
+
+.qis-quicklink-choice {
+  background: var(--qis-surface);
+  color: var(--qis-text) !important;
+  border: 1px solid var(--qis-border);
+  box-shadow: none;
+}
+
+.qis-quicklink-choice:hover {
+  border-color: var(--qis-blue-light);
+}
+
+/* -------------------------------------------------------------------------
    Notenspiegel — card-based grade view (ersetzt die rohe QIS-Notentabelle
    auf state=notenspiegelStudent; siehe index.js enhanceGradesView).
    ------------------------------------------------------------------------- */

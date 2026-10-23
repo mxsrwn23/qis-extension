@@ -23,6 +23,60 @@ const log = (...args) => {
 const DEBOUNCE_MS = 150;
 const LEGACY_TABLE_ATTRS = ["width", "height", "align", "valign", "border", "cellpadding", "cellspacing", "bgcolor"];
 
+/* -----------------------------------------------------------------------
+   Lade-Overlay für den Notentabelle-Schnellzugriff (siehe weiter unten:
+   "Schnellzugriff auf Meine Funktionen"). Deckt den sichtbaren
+   Durchklick-Flicker der automatischen Zwischenschritte ab — möglichst früh
+   (document_start) registriert, damit kein ungestyltes Zwischenbild
+   aufblitzt, bevor nach DOMContentLoaded entschieden wird, ob der nächste
+   Sprung automatisch erfolgt oder der Overlay wieder verschwinden soll.
+   ------------------------------------------------------------------------- */
+
+const AUTO_GRADES_FLAG = "qisPlusAutoGrades";
+const AUTO_GRADES_HOPS_KEY = "qisPlusAutoGradesHops";
+const AUTO_GRADES_VISITED_KEY = "qisPlusAutoGradesVisited";
+const AUTO_GRADES_OVERLAY_ID = "qis-plus-auto-grades-overlay";
+
+function isAutoGradesPilotActive() {
+  try {
+    return sessionStorage.getItem(AUTO_GRADES_FLAG) === "1";
+  } catch (e) {
+    return false;
+  }
+}
+
+function showAutoGradesOverlay() {
+  if (document.getElementById(AUTO_GRADES_OVERLAY_ID)) return;
+  const overlay = document.createElement("div");
+  overlay.id = AUTO_GRADES_OVERLAY_ID;
+  overlay.innerHTML =
+    '<div class="qis-auto-grades-spinner"></div><div class="qis-auto-grades-text">Notentabelle wird geöffnet …</div>';
+  const mount = () => {
+    if (document.getElementById(AUTO_GRADES_OVERLAY_ID)) return;
+    (document.body || document.documentElement).appendChild(overlay);
+  };
+  if (document.body) {
+    mount();
+  } else {
+    // document_start: <body> existiert ggf. noch nicht.
+    new MutationObserver((_, observer) => {
+      if (document.body) {
+        mount();
+        observer.disconnect();
+      }
+    }).observe(document.documentElement, { childList: true, subtree: true });
+  }
+}
+
+function hideAutoGradesOverlay() {
+  const overlay = document.getElementById(AUTO_GRADES_OVERLAY_ID);
+  if (overlay) overlay.remove();
+}
+
+(function maybeShowAutoGradesOverlay() {
+  if (isAutoGradesPilotActive()) showAutoGradesOverlay();
+})();
+
 // QIS liefert keinen Viewport-Meta-Tag (klassische Desktop-Java-Webanwendung).
 // Ohne ihn rendert mobile Safari/Chrome die Seite auf einem virtuellen
 // ~980px-Layout-Viewport und zoomt nur verkleinert heraus — unsere
@@ -820,6 +874,230 @@ async function enhanceGradesView(root, settings) {
 }
 
 /* -----------------------------------------------------------------------
+   Schnellzugriff auf "Meine Funktionen" — Direktsprung zur Notentabelle.
+   Normalerweise: Funktionen → Prüfungsverwaltung → Notenspiegel → Abschluss
+   → Studiengang (4 Klicks), obwohl Abschluss/Studiengang für eine Person
+   praktisch nie wechseln.
+   QIS' Auswahlbaum ist serverseitig zustandsbehaftet (welche Knoten
+   "aufgeklappt" sind, hängt vom bisherigen Navigationsverlauf der Session
+   ab) — ein Nachbau per Hintergrund-fetch() liefert deshalb je nach
+   Sitzungsverlauf unterschiedliche (teils unvollständige) Bäume. Robuster:
+   ein "Autopilot"-Flag in sessionStorage, das echte Seitenaufrufe (wie ein
+   Klick sie auch auslösen würde) automatisch weiterklickt, bis entweder die
+   Notentabelle erreicht ist oder eine echte Entscheidung (z. B. zwischen
+   mehreren Studiengängen) ansteht. */
+
+// Funktionen → Prüfungsverwaltung → Notenspiegel → Abschluss → Studiengang
+// sind 4 Sprünge im Normalfall — 6 lässt Luft, ohne eine echte Endlosschleife
+// (z. B. falls ein Baum-Knoten serverseitig bei jedem Aufruf zwischen
+// auf-/zugeklappt umschaltet statt stabil zu bleiben) durchzulassen.
+const AUTO_GRADES_MAX_HOPS = 6;
+
+function startAutoGradesPilot() {
+  try {
+    sessionStorage.setItem(AUTO_GRADES_FLAG, "1");
+    sessionStorage.setItem(AUTO_GRADES_HOPS_KEY, "0");
+    sessionStorage.setItem(AUTO_GRADES_VISITED_KEY, "[]");
+  } catch (e) {
+    // sessionStorage kann z. B. im strikten privaten Modus fehlschlagen —
+    // der Pilot bleibt dann einfach aus, kein Folgefehler nötig.
+  }
+  showAutoGradesOverlay();
+}
+
+function stopAutoGradesPilot() {
+  try {
+    sessionStorage.removeItem(AUTO_GRADES_FLAG);
+    sessionStorage.removeItem(AUTO_GRADES_HOPS_KEY);
+    sessionStorage.removeItem(AUTO_GRADES_VISITED_KEY);
+  } catch (e) {
+    // s.o.
+  }
+  hideAutoGradesOverlay();
+}
+
+/** Navigiert einen Autopilot-Schritt weiter. Zwei unabhängige Schutzschranken
+ *  gegen Endlosschleifen: ein hartes Sprunglimit und eine Erkennung, falls
+ *  derselbe Baum-Zustand (URL) ein zweites Mal angesteuert würde — QIS' Baum
+ *  ist serverseitig zustandsbehaftet und kann einen Knoten im Einzelfall
+ *  zwischen auf-/zugeklappt umschalten statt stabil zu erweitern. */
+function advanceAutoGradesPilot(url) {
+  let hops;
+  let visited;
+  try {
+    hops = parseInt(sessionStorage.getItem(AUTO_GRADES_HOPS_KEY) || "0", 10) + 1;
+    visited = JSON.parse(sessionStorage.getItem(AUTO_GRADES_VISITED_KEY) || "[]");
+  } catch (e) {
+    hops = AUTO_GRADES_MAX_HOPS + 1; // sessionStorage nicht verfügbar → sicherheitshalber abbrechen
+    visited = [];
+  }
+  if (visited.includes(url)) {
+    console.warn("[QIS+] Schnellzugriff Notentabelle abgebrochen (Schleife im QIS-Auswahlbaum erkannt).");
+    stopAutoGradesPilot();
+    return;
+  }
+  if (hops > AUTO_GRADES_MAX_HOPS) {
+    console.warn("[QIS+] Schnellzugriff Notentabelle abgebrochen (zu viele automatische Sprünge).");
+    stopAutoGradesPilot();
+    return;
+  }
+  visited.push(url);
+  try {
+    sessionStorage.setItem(AUTO_GRADES_HOPS_KEY, String(hops));
+    sessionStorage.setItem(AUTO_GRADES_VISITED_KEY, JSON.stringify(visited));
+  } catch (e) {
+    // s.o.
+  }
+  location.href = url;
+}
+
+/** "Meine Funktionen" ist über mehrere URL-Varianten erreichbar (u. a.
+ *  direkt nach dem Login über type=0&category=menu.browse, über die
+ *  "Meine Funktionen"-Kachel dagegen über type=8) — beide rendern aber
+ *  denselben leeren Hub mit der H1 "Meine Funktionen". Die Überschrift ist
+ *  damit der zuverlässigere Anker als die wechselnden type-Parameter. */
+function isFunctionsOverviewPage(root) {
+  const params = new URLSearchParams(location.search);
+  if (params.get("state") !== "user") return false;
+  const heading = root.querySelector(".content_max_portal_qis .headline h1, .content .headline h1");
+  return !!heading && normText(heading.textContent) === "Meine Funktionen";
+}
+
+/** Der Sidebar-Link zur Prüfungsverwaltung trägt (anders als die Links
+ *  dahinter) kein Session-Token und ist daher stabil genug, um ihn direkt aus
+ *  dem aktuellen DOM zu lesen statt ihn selbst herzuleiten. */
+function findPruefungsverwaltungLink(root) {
+  const nav = root.getElementById ? root.getElementById("makronavigation") : null;
+  if (!nav) return null;
+  const link = Array.from(nav.querySelectorAll(".menue a")).find((a) =>
+    normText(a.textContent).toLowerCase().includes("prüfungsverwaltung")
+  );
+  return link ? link.href : null;
+}
+
+function buildQuickAccessCard() {
+  const card = document.createElement("div");
+  card.className = "qis-quicklinks";
+
+  const title = document.createElement("div");
+  title.className = "qis-quicklinks-title";
+  title.textContent = "Schnellzugriff";
+  card.appendChild(title);
+
+  const row = document.createElement("div");
+  row.className = "qis-quicklinks-row";
+  card.appendChild(row);
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "qis-quicklink-btn";
+  button.textContent = "Zur Notentabelle";
+  row.appendChild(button);
+
+  const status = document.createElement("div");
+  status.className = "qis-quicklinks-status";
+  card.appendChild(status);
+
+  button.addEventListener("click", () => {
+    const pvUrl = findPruefungsverwaltungLink(document);
+    if (!pvUrl) {
+      status.textContent = "Prüfungsverwaltung-Link nicht gefunden — bitte über die Navigation öffnen.";
+      return;
+    }
+    button.disabled = true;
+    button.textContent = "Lädt …";
+    startAutoGradesPilot();
+    advanceAutoGradesPilot(pvUrl);
+  });
+
+  return card;
+}
+
+function enhanceFunctionsOverview(root) {
+  if (!isFunctionsOverviewPage(root)) return;
+  if (document.querySelector(".qis-quicklinks")) return;
+  const content = root.querySelector(".content_max_portal_qis") || root.querySelector(".content");
+  if (!content) return;
+  const headline = content.querySelector(".headline");
+  const card = buildQuickAccessCard();
+  if (headline) headline.insertAdjacentElement("afterend", card);
+  else content.insertBefore(card, content.firstChild);
+}
+
+/** Setzt die automatische Klickkette fort, solange der Autopilot aktiv ist:
+ *  Prüfungsverwaltung-Menü → "Notenspiegel" → (einziger) Abschluss →
+ *  (gemerkter oder einziger) Studiengang → Notentabelle. Bei einer echten
+ *  Entscheidung (mehrere Studiengänge, noch keine Wahl gespeichert) merkt
+ *  sich ein einmaliger Klick-Listener die Auswahl für künftige Durchläufe,
+ *  ohne den Klick selbst zu beeinflussen. */
+function runAutoGradesPilot(root, settings) {
+  if (!isAutoGradesPilotActive()) return;
+
+  if (findGradesTable(root)) {
+    stopAutoGradesPilot();
+    return;
+  }
+
+  if (!location.href.includes("state=notenspiegelStudent")) {
+    const nsLink = Array.from(root.querySelectorAll("a")).find((a) =>
+      (a.getAttribute("href") || "").includes("state=notenspiegelStudent")
+    );
+    if (nsLink) advanceAutoGradesPilot(nsLink.href);
+    else stopAutoGradesPilot();
+    return;
+  }
+
+  const leafLinks = Array.from(root.querySelectorAll("li.treelist > a")).filter((a) =>
+    (a.getAttribute("href") || "").includes("next=list.vm")
+  );
+
+  if (leafLinks.length) {
+    if (leafLinks.length === 1) {
+      advanceAutoGradesPilot(leafLinks[0].href);
+      return;
+    }
+    const preferred = settings.gradesQuickLinkStudiengang;
+    const match = preferred && leafLinks.find((a) => normText(a.textContent) === preferred);
+    if (match) {
+      advanceAutoGradesPilot(match.href);
+      return;
+    }
+    // Mehrere Studiengänge, noch keine Wahl gespeichert: Entscheidung bleibt
+    // beim Nutzer (Klick auf den echten QIS-Baumlink) — wir merken uns seine
+    // Wahl für das nächste Mal. Der Klick wird abgefangen (preventDefault),
+    // damit die Seite nicht wegnavigiert, bevor der asynchrone Storage-Write
+    // abgeschlossen ist — sonst geht die Auswahl im Race gegen die Navigation
+    // verloren. Overlay weg (Pilot-Flag bleibt aktiv, damit der Klick noch
+    // abgefangen werden kann), damit der Nutzer die echte Auswahl sieht.
+    hideAutoGradesOverlay();
+    leafLinks.forEach((a) => {
+      if (a.dataset.qisAutoGradesBound) return;
+      a.dataset.qisAutoGradesBound = "1";
+      a.addEventListener("click", (event) => {
+        event.preventDefault();
+        const href = a.href;
+        saveSettings({ gradesQuickLinkStudiengang: normText(a.textContent) })
+          .catch((e) => console.error("[QIS+] Studiengang-Auswahl konnte nicht gespeichert werden:", e))
+          .finally(() => {
+            stopAutoGradesPilot();
+            location.href = href;
+          });
+      });
+    });
+    return;
+  }
+
+  // Noch keine Blätter sichtbar: den (einzigen) nächsten Zweig automatisch
+  // aufklappen. Bei mehreren Zweigen (z. B. mehrere Abschlüsse, sehr selten)
+  // bricht der Pilot ab und überlässt die Wahl dem Nutzer.
+  const branchLinks = Array.from(root.querySelectorAll("li.treelist > a")).filter((a) =>
+    (a.getAttribute("href") || "").includes("next=tree.vm")
+  );
+  if (branchLinks.length === 1) advanceAutoGradesPilot(branchLinks[0].href);
+  else stopAutoGradesPilot();
+}
+
+/* -----------------------------------------------------------------------
    Prüfungsanmeldung — bereits bestandene Module im Baum markieren
    ------------------------------------------------------------------------- */
 
@@ -993,7 +1271,9 @@ function enhance(root, settings) {
   stripLegacyTableAttrs(root);
   stripInlineDimensions(root);
   markKeyValueTables(root);
+  runAutoGradesPilot(root, settings);
   enhanceGradesView(root, settings);
+  enhanceFunctionsOverview(root);
   enhancePruefungsAnmeldung(root);
   makeTablesResponsive(root);
   makeKvTablesCollapsible(root);
@@ -1055,7 +1335,9 @@ export default defineContentScript({
             (n) =>
               n.nodeType !== 1 ||
               n.classList?.contains("qis-table-scroll") ||
-              n.closest?.(".qis-bottom-nav, .qis-brand-caption, .qis-tree-row, .qis-grades")
+              n.closest?.(
+                ".qis-bottom-nav, .qis-brand-caption, .qis-tree-row, .qis-grades, .qis-quicklinks, #qis-plus-auto-grades-overlay"
+              )
           )
         );
         if (!isOwnMutation) debouncedEnhance();

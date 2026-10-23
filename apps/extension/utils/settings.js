@@ -31,6 +31,11 @@ export const DEFAULT_SETTINGS = {
   // "none"/"grade"/"semester") — bleibt über Seitenaufrufe hinweg erhalten.
   gradesFilter: "all",
   gradesSort: "none",
+  // Text des zuletzt gewählten Studiengang-Links im Notenspiegel-Baum (z. B.
+  // "Informatik (PO-Version 2019)") — bei mehreren Studiengängen (z. B.
+  // dual + regulär) überspringt der Schnellzugriff-Button damit künftig die
+  // erneute Auswahl. null = noch keine Wahl gespeichert.
+  gradesQuickLinkStudiengang: null,
 };
 
 export async function loadSettings() {

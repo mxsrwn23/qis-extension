@@ -955,12 +955,20 @@ function advanceAutoGradesPilot(url) {
  *  direkt nach dem Login über type=0&category=menu.browse, über die
  *  "Meine Funktionen"-Kachel dagegen über type=8) — beide rendern aber
  *  denselben leeren Hub mit der H1 "Meine Funktionen". Die Überschrift ist
- *  damit der zuverlässigere Anker als die wechselnden type-Parameter. */
-function isFunctionsOverviewPage(root) {
+ *  damit der zuverlässigere Anker als die wechselnden type-Parameter.
+ *  Der Wrapper um das h1 unterscheidet sich je Variante (type=8: .headline
+ *  .headlineText h1, type=0&category=menu.browse: h1 ohne .headline direkt
+ *  im Content-Div) — daher wird hier bewusst nur nach h1 innerhalb der
+ *  Content-Karte gesucht statt den .headline-Wrapper vorauszusetzen. */
+function findFunctionsOverviewHeading(root) {
   const params = new URLSearchParams(location.search);
-  if (params.get("state") !== "user") return false;
-  const heading = root.querySelector(".content_max_portal_qis .headline h1, .content .headline h1");
-  return !!heading && normText(heading.textContent) === "Meine Funktionen";
+  if (params.get("state") !== "user") return null;
+  const heading = root.querySelector(".content_max_portal_qis h1, .content h1");
+  return heading && normText(heading.textContent) === "Meine Funktionen" ? heading : null;
+}
+
+function isFunctionsOverviewPage(root) {
+  return !!findFunctionsOverviewHeading(root);
 }
 
 /** Der Sidebar-Link zur Prüfungsverwaltung trägt (anders als die Links
@@ -1014,14 +1022,17 @@ function buildQuickAccessCard() {
 }
 
 function enhanceFunctionsOverview(root) {
-  if (!isFunctionsOverviewPage(root)) return;
+  const heading = findFunctionsOverviewHeading(root);
+  if (!heading) return;
   if (document.querySelector(".qis-quicklinks")) return;
   const content = root.querySelector(".content_max_portal_qis") || root.querySelector(".content");
   if (!content) return;
-  const headline = content.querySelector(".headline");
+  // type=8 rendert die Überschrift in .headline, type=0&category=menu.browse
+  // packt das h1 direkt in ein unbenanntes Div — in beiden Fällen soll die
+  // Karte direkt hinter diesem Wrapper landen statt vor dem h1.
+  const anchor = heading.closest(".headline") || heading.parentElement || heading;
   const card = buildQuickAccessCard();
-  if (headline) headline.insertAdjacentElement("afterend", card);
-  else content.insertBefore(card, content.firstChild);
+  anchor.insertAdjacentElement("afterend", card);
 }
 
 /** Setzt die automatische Klickkette fort, solange der Autopilot aktiv ist:

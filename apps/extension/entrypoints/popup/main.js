@@ -1,4 +1,4 @@
-import { loadSettings, saveSettings, loadKnownColumns, DEFAULT_COLORS } from "../../utils/settings.js";
+import { loadSettings, saveSettings, DEFAULT_COLORS } from "../../utils/settings.js";
 
 const COLOR_LABELS = {
   be: "Bestanden",
@@ -6,24 +6,20 @@ const COLOR_LABELS = {
   fail: "Nicht bestanden",
   an: "Angemeldet",
   wait: "Prüfung geschrieben (warten)",
-  section: "Abschnittszeilen",
+  section: "Abschnittstitel",
 };
 
 const avgModeSelect = document.getElementById("avg-mode");
 const hideDetailsCheckbox = document.getElementById("hide-completed-details");
 const lastAttemptCheckbox = document.getElementById("show-only-last-attempt");
 const studienleistungenCheckbox = document.getElementById("hide-studienleistungen");
-const columnList = document.getElementById("column-list");
-const columnHint = document.getElementById("column-hint");
 const colorList = document.getElementById("color-list");
 const resetColorsButton = document.getElementById("reset-colors");
 
 (async function () {
   let settings;
-  let knownColumns = [];
   try {
     settings = await loadSettings();
-    knownColumns = await loadKnownColumns();
   } catch (e) {
     console.error("[QIS+] Settings konnten nicht geladen werden:", e);
     return;
@@ -45,25 +41,6 @@ const resetColorsButton = document.getElementById("reset-colors");
   studienleistungenCheckbox.addEventListener("change", () =>
     saveSettings({ hideStudienleistungen: studienleistungenCheckbox.checked })
   );
-
-  // --- Spalten: Checkboxen aus den vom Content-Script gemeldeten Headern bauen ---
-  columnHint.hidden = knownColumns.length > 0;
-
-  const columnCheckboxes = new Map();
-  knownColumns.forEach((name) => {
-    const label = document.createElement("label");
-    label.className = "checkbox";
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.checked = !settings.hiddenColumns.includes(name);
-    checkbox.addEventListener("change", () => {
-      const hidden = [...columnCheckboxes].filter(([, cb]) => !cb.checked).map(([n]) => n);
-      saveSettings({ hiddenColumns: hidden });
-    });
-    columnCheckboxes.set(name, checkbox);
-    label.append(checkbox, document.createTextNode(" " + name));
-    columnList.append(label);
-  });
 
   // --- Farben: ein Picker pro Status; Tint/Textfarbe leitet style.css selbst ab ---
   const colorInputs = new Map();

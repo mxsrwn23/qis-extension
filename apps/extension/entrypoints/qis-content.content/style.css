@@ -1,70 +1,1997 @@
-/* QIS+ Statusfarben für die Notenübersicht.
-   Standardfarben zentral hier — das Popup überschreibt sie bei Bedarf über die
-   CSS-Variablen (--qisplus-*). JS setzt nur Klassen/Variablen, keine Farben.
-   Muss mit DEFAULT_COLORS in utils/settings.js übereinstimmen. */
+/* =========================================================================
+   QIS+ — style.css
+   Modernes, responsives Redesign für das QIS-Prüfungsportal (Hochschule Trier).
+   Portiert aus qis_new-design/QIS-Modernizer/styles.css, Statusfarben bleiben
+   über das Popup anpassbar (siehe --qis-grade-* unten / utils/settings.js).
+   ========================================================================= */
+
 :root {
-  --qisplus-be: #34c759;       /* bestanden */
-  --qisplus-pv: #ff9500;       /* Prüfungen vorhanden, noch nicht bestanden (offen/in Arbeit) */
-  --qisplus-fail: #ff3b30;     /* nicht bestanden / endgültig nicht bestanden */
-  --qisplus-an: #007aff;       /* angemeldet, Ergebnis steht noch aus */
-  --qisplus-wait: #af52de;     /* Prüfung geschrieben, Ergebnis steht noch aus */
-  --qisplus-section: #8e8e93;  /* Kern-/Pflicht-/Wahlpflichtmodule Trennzeile */
+  --qis-navy: var(--qis-brand-orange);
+  --qis-navy-dark: #9c3f11;
+  --qis-blue: var(--qis-brand-orange);
+  --qis-blue-rgb: 202, 81, 22;
+  --qis-blue-light: #e0894f;
+  --qis-accent: #ffb800;
+  --qis-brand-orange: #ca5116;
+  --qis-red: #a50034;
+  --qis-bg: #f4f6f8;
+  --qis-surface: #ffffff;
+  --qis-border: #e2e6eb;
+  --qis-text: #1c2733;
+  --qis-text-muted: #5b6b7a;
+  --qis-radius: 12px;
+  --qis-radius-sm: 8px;
+  --qis-shadow-sm: 0 1px 2px rgba(16, 30, 45, 0.06);
+  --qis-shadow-md: 0 4px 16px rgba(16, 30, 45, 0.08);
+  --qis-shadow-lg: 0 12px 32px rgba(16, 30, 45, 0.14);
+  --qis-space-1: 4px;
+  --qis-space-2: 8px;
+  --qis-space-3: 12px;
+  --qis-space-4: 16px;
+  --qis-space-5: 24px;
+  --qis-space-6: 32px;
+  --qis-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --qis-ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --qis-header-h: 64px;
+
+  /* Status-Farben für die Notenspiegel-Karten — Standardwerte müssen mit
+     DEFAULT_COLORS in utils/settings.js übereinstimmen. Das Popup überschreibt
+     sie bei Bedarf per Inline-Style (--qis-grade-*), das Content-Script setzt
+     nur Klassen/Variablen, keine Farben. notadmitted/noresult sind bewusst
+     nicht anpassbar (Randfälle ohne eigenen Popup-Regler). */
+  --qis-grade-be: #34c759; /* bestanden */
+  /* Eigener Blauton statt Systemblau: --qis-grade-an (Angemeldet) ist ebenfalls
+     blau, ein zu ähnlicher Ton hätte beide Status auf den Karten kaum
+     unterscheidbar gemacht. */
+  --qis-grade-pv: #32ade6; /* Prüfungen vorhanden, noch nicht bestanden */
+  --qis-grade-fail: #ff3b30; /* nicht bestanden / endgültig nicht bestanden */
+  --qis-grade-an: #007aff; /* angemeldet, Ergebnis steht noch aus */
+  --qis-grade-wait: #af52de; /* Prüfung geschrieben, Ergebnis steht noch aus */
+  --qis-grade-section: #8e8e93; /* Abschnittstitel (Kern-/Pflicht-/Wahlpflichtmodule) */
+  --qis-grade-notadmitted: #ff9500;
+  --qis-grade-noresult: #6b7785;
+
+  --qis-heading: var(--qis-navy);
+  --qis-link-hover: var(--qis-heading);
+  --qis-focus-ring: var(--qis-blue);
+  /* Hintergrund-Tönung für den aktiven Menüpunkt in #makronavigation — als
+     Variable, damit die dunkle Navy-Tönung (rgba(0,60,98,…)) im Dark Mode
+     nicht unsichtbar wird. */
+  --qis-active-tint: rgba(0, 60, 98, 0.08);
+  /* Frosted-Glass-Hintergrund der Bottom-Tab-Bar — ebenfalls modeabhängig,
+     damit die Bar im Dark Mode nicht weiß aufleuchtet. */
+  --qis-navbar-bg: rgba(255, 255, 255, 0.92);
 }
 
-/* Badge-Optik: getönter Hintergrund + kräftige Akzentfarbe als Text.
-   color-mix leitet beide Töne aus EINER Akzentfarbe ab, damit im Popup ein
-   Farbwähler pro Status genügt.
-   QIS selbst ist immer hell dargestellt, daher kein prefers-color-scheme-Zweig. */
-.qisplus-status--be   { --_qisplus-accent: var(--qisplus-be); }
-.qisplus-status--pv   { --_qisplus-accent: var(--qisplus-pv); }
-.qisplus-status--fail { --_qisplus-accent: var(--qisplus-fail); }
-.qisplus-status--an   { --_qisplus-accent: var(--qisplus-an); }
-.qisplus-status--wait { --_qisplus-accent: var(--qisplus-wait); }
+.header_hisinone,
+.divfoot_navigation,
+.divfoot_logo {
+  --qis-link-hover: #ffffff;
+  --qis-focus-ring: #ffffff;
+}
 
-.qisplus-status--be,
-.qisplus-status--pv,
-.qisplus-status--fail,
-.qisplus-status--an,
-.qisplus-status--wait {
+@media (prefers-color-scheme: dark) {
+  :root {
+    --qis-bg: #12181f;
+    --qis-surface: #1a222c;
+    --qis-border: #2a3542;
+    --qis-text: #eaeff4;
+    --qis-text-muted: #93a2b1;
+    --qis-heading: #e2884f;
+    --qis-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --qis-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+    --qis-shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
+    --qis-grade-notadmitted: #ffb340;
+    --qis-grade-noresult: #93a2b1;
+    --qis-active-tint: rgba(202, 81, 22, 0.18);
+    --qis-navbar-bg: rgba(26, 34, 44, 0.92);
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Reset & base
+   ------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden !important;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--qis-bg) !important;
+  color: var(--qis-text) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "Open Sans", Roboto, Helvetica, Arial, sans-serif !important;
+  font-size: 15px;
+  line-height: 1.55;
+  margin: 0 !important;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--qis-blue);
+  text-decoration: none;
+  transition: color 140ms var(--qis-ease-out);
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--qis-link-hover);
+  text-decoration: underline;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--qis-focus-ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--qis-heading);
+  font-weight: 650;
+  line-height: 1.25;
+  margin: 0 0 var(--qis-space-4);
+}
+
+h1 {
+  font-size: clamp(1.4rem, 1.1rem + 1vw, 1.9rem);
+  letter-spacing: -0.01em;
+}
+
+#wrapper {
+  max-width: 100% !important;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.unsichtbar {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.unsichtbar a:focus {
+  position: fixed;
+  top: var(--qis-space-2);
+  left: var(--qis-space-2);
+  width: auto;
+  height: auto;
+  clip: auto;
+  background: var(--qis-navy);
+  color: #fff;
+  padding: var(--qis-space-2) var(--qis-space-4);
+  border-radius: var(--qis-radius-sm);
+  z-index: 1000;
+}
+
+/* -------------------------------------------------------------------------
+   Header / Branding
+   ------------------------------------------------------------------------- */
+
+a[name="navi"],
+a[name="lese"] {
+  scroll-margin-top: var(--qis-header-h);
+}
+
+/* QIS verlinkt manche Anker/Module mit name="lese" und färbt sie in deren
+   Seiten-CSS #006ab2 (Portalblau). Je nach Browser-Injektionsreihenfolge
+   gewinnt sonst unser generisches a { color: var(--qis-blue) } (Orange) und
+   der Link sieht in Firefox anders aus als in Chrome. Daher die Portalblau-
+   Farbe hier explizit fixen, damit es browserübergreifend gleich bleibt. */
+a[name="lese"] {
+  color: #006ab2 !important;
+}
+
+.header_hisinone {
+  background: linear-gradient(135deg, var(--qis-navy) 0%, var(--qis-navy-dark) 100%) !important;
+  display: flex !important;
+  align-items: center;
+  gap: var(--qis-space-4);
+  height: var(--qis-header-h) !important;
+  padding: 0 var(--qis-space-5) !important;
+  box-shadow: var(--qis-shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.header_hisinone .logo {
+  display: flex;
+  align-items: center;
+  gap: var(--qis-space-3);
+  margin: 0 !important;
+  float: none !important;
+  min-width: 0;
+}
+
+.header_hisinone .logo img {
+  filter: brightness(0) invert(1);
+  height: var(--qis-header-h) !important;
+  width: auto !important;
+}
+
+.header_hisinone .logo img.hochschulBild {
+  display: none;
+}
+
+.services {
+  float: none !important;
+  display: flex;
+  align-items: center;
+  margin-left: auto !important;
+}
+
+.services ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: var(--qis-space-2);
+}
+
+.services a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: background 140ms var(--qis-ease-out);
+}
+
+.services a:hover,
+.services a:focus-visible {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.services a img {
+  border-radius: 4px;
+  opacity: 0.85;
+  transition: opacity 140ms var(--qis-ease-out);
+}
+
+.services a:hover img {
+  opacity: 1;
+}
+
+.qis-brand-caption {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  padding-left: var(--qis-space-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+@media (max-width: 720px) {
+  .qis-brand-caption {
+    display: none;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Login status bar
+   ------------------------------------------------------------------------- */
+
+.divloginstatus {
+  background: var(--qis-surface) !important;
+  border-bottom: 1px solid var(--qis-border);
+  padding: var(--qis-space-2) var(--qis-space-5) !important;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--qis-space-2);
+  font-size: 0.85rem;
+  color: var(--qis-text-muted) !important;
+}
+
+.divloginstatus img {
+  display: none;
+}
+
+.divloginstatus a,
+.divlinks a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 4px 0;
+}
+
+.divloginstatus .links3 {
   font-weight: 600;
-  color: color-mix(in srgb, var(--_qisplus-accent) 78%, #111111) !important;
-  background-color: color-mix(in srgb, var(--_qisplus-accent) 22%, transparent) !important;
-  /* farbiger Balken links — als Inset-Schatten, damit sich das Layout nicht verschiebt */
-  box-shadow: inset 3px 0 0 var(--_qisplus-accent);
+  color: var(--qis-blue);
 }
 
-.qisplus-status--section {
+.divlinks {
+  /* QIS hinterlegt den Streifen (z. B. Stammdaten-Schnelllinks) fest weiß —
+     ohne eigenen Hintergrund leuchtet er im Dark Mode als weißer Balken. */
+  background: var(--qis-surface) !important;
+  border-bottom: 1px solid var(--qis-border);
+  padding: var(--qis-space-2) var(--qis-space-5) !important;
+  font-size: 0.85rem;
+  color: var(--qis-text-muted) !important;
+}
+
+.divlinks a,
+.divlinks a:visited {
+  color: var(--qis-text) !important;
+}
+
+.divlinks a:hover {
+  color: var(--qis-heading) !important;
+}
+
+.divlinks a.links2visited {
+  justify-content: center;
+  padding: 8px 18px !important;
+  border: 1px solid var(--qis-border) !important;
+  border-radius: var(--qis-radius-sm) !important;
+  background: var(--qis-surface) !important;
+  color: var(--qis-heading) !important;
+  font-weight: 600;
+  box-shadow: var(--qis-shadow-sm);
+  transition: background 140ms var(--qis-ease-out), border-color 140ms var(--qis-ease-out);
+}
+
+.divlinks a.links2visited:hover {
+  background: var(--qis-bg) !important;
+  border-color: var(--qis-blue-light) !important;
+}
+
+/* -------------------------------------------------------------------------
+   Breadcrumb
+   ------------------------------------------------------------------------- */
+
+.breadcrumb {
+  background: transparent !important;
+  padding: var(--qis-space-3) var(--qis-space-5) 0 !important;
+  font-size: 0.82rem;
+  color: var(--qis-text-muted) !important;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--qis-space-1);
+}
+
+.breadcrumb img {
+  width: 10px;
+  height: 10px;
+  opacity: 0.5;
+  vertical-align: middle;
+}
+
+/* QIS überschreibt die Textfarbe (Sonst im Dark Mode zu dunkel) — per
+   !important festschrauben. Der aktuelle Seiten-Link (<strong>) bekommt die
+   volle Textfarbe, die restlichen Links das gedämpfte Muted. */
+.breadcrumb a,
+.breadcrumb a:visited {
+  color: var(--qis-text-muted) !important;
+}
+
+.breadcrumb strong {
+  color: var(--qis-text) !important;
+}
+
+.breadcrumb a:hover {
+  color: var(--qis-heading);
+}
+
+/* -------------------------------------------------------------------------
+   Layout shell
+   ------------------------------------------------------------------------- */
+
+.divcontent {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--qis-space-5);
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto !important;
+  padding: var(--qis-space-4) var(--qis-space-5) var(--qis-space-6) !important;
+  flex: 1 1 auto;
+  background: transparent !important;
+}
+
+/* -------------------------------------------------------------------------
+   Sidebar navigation (#makronavigation)
+   ------------------------------------------------------------------------- */
+
+#makronavigation {
+  background: var(--qis-surface) !important;
+  border: 1px solid var(--qis-border);
+  border-radius: var(--qis-radius);
+  box-shadow: var(--qis-shadow-sm);
+  flex: 0 0 240px;
+  padding: var(--qis-space-3) !important;
+  position: sticky;
+  top: var(--qis-space-4);
+  align-self: flex-start;
+}
+
+#makronavigation .menue {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+#makronavigation .menue,
+#makronavigation .menue li {
+  background: transparent !important;
+}
+
+#makronavigation .menue li {
+  list-style: none;
+}
+
+/* QIS zeichnet unter jedem Nav-Punkt eine fest 1px, weiß gestrichelte Linie —
+   im hellen Modus kaum sichtbar, im Dark Mode leuchten die Striche auf.
+   Entfernen, da unsere Buttons/Zeilen eigene (modeabhängige) Ränder haben. */
+#makronavigation a,
+#makronavigation li {
+  border: none !important;
+}
+
+#makronavigation .auflistung,
+#makronavigation a.visited {
+  display: flex !important;
+  align-items: center;
+  min-height: 44px;
+  padding: 13px 14px !important;
+  border-radius: var(--qis-radius-sm);
+  color: var(--qis-text) !important;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background-color 140ms var(--qis-ease-out), color 140ms var(--qis-ease-out), transform 140ms var(--qis-ease-out);
+}
+
+#makronavigation .auflistung:hover,
+#makronavigation a:focus,
+#makronavigation a:hover,
+#makronavigation a:active {
+  background: rgba(var(--qis-blue-rgb), 0.1) !important;
+  color: var(--qis-heading) !important;
+  text-decoration: none;
+  transform: translateX(2px);
+}
+
+#makronavigation .submenuCss .auflistung,
+#makronavigation a.visited {
+  background: var(--qis-active-tint) !important;
+  color: var(--qis-heading) !important;
+  font-weight: 650;
+}
+
+/* Der bereits aktive Menüpunkt ist schon hervorgehoben — die generische
+   Hover-Regel oben änderte beim Drüberfahren trotzdem den Hintergrund (per
+   !important) und verschob den Eintrag per translateX, ohne die Textfarbe
+   anzupassen. Das wirkte wie ein halb kaputter Hover-Zustand. Aktive Einträge
+   behalten beim Hover jetzt einfach ihren Look. */
+#makronavigation .submenuCss .auflistung:hover,
+#makronavigation a.visited:hover {
+  background: var(--qis-active-tint) !important;
+  transform: none;
+}
+
+#makronavigation .menueListStyleCloseMenu {
+  border-top: 1px solid var(--qis-border);
+  margin-top: var(--qis-space-2);
+  padding-top: var(--qis-space-2);
+}
+
+#makronavigation.qis-nav-empty,
+.qis-bottom-nav.qis-nav-empty {
+  display: none !important;
+}
+
+/* -------------------------------------------------------------------------
+   Bottom-Tab-Bar (<900px, ersetzt die Sidebar auf Phone & iPad-Portrait)
+   ------------------------------------------------------------------------- */
+
+.qis-bottom-nav {
+  display: none;
+  align-items: stretch;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  background: var(--qis-navbar-bg);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-top: 1px solid var(--qis-border);
+  padding-bottom: max(8px, env(safe-area-inset-bottom));
+  box-shadow: 0 -4px 16px rgba(16, 30, 45, 0.06);
+}
+
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .qis-bottom-nav {
+    background: var(--qis-surface);
+  }
+}
+
+.qis-bottom-nav a {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-height: 56px;
+  padding: 8px 4px 4px;
+  color: var(--qis-text-muted) !important;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: color 140ms var(--qis-ease-out), transform 140ms var(--qis-ease-out);
+}
+
+.qis-bottom-nav a svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  flex-shrink: 0;
+}
+
+.qis-bottom-nav a::before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: transparent;
+  transition: background-color 140ms var(--qis-ease-out);
+}
+
+.qis-bottom-nav a.qis-active {
+  color: var(--qis-blue) !important;
+}
+
+.qis-bottom-nav a.qis-active::before {
+  background: var(--qis-brand-orange);
+}
+
+.qis-bottom-nav a:active {
+  transform: scale(0.94);
+}
+
+/* -------------------------------------------------------------------------
+   Main content card
+   ------------------------------------------------------------------------- */
+
+.content,
+.content_max_portal_qis {
+  background: var(--qis-surface) !important;
+  border: 1px solid var(--qis-border);
+  border-radius: var(--qis-radius);
+  box-shadow: var(--qis-shadow-sm);
+  padding: var(--qis-space-5) !important;
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100% !important;
+  animation: qis-fade-in 260ms var(--qis-ease-out);
+}
+
+/* Login-Karte: schrumpft eng um den Inhalt statt über die volle Breite der
+   (auf Desktop teils sehr breiten) Content-Fläche gestreckt. Gezielt nur für
+   Karten mit Login-Formular — .content_max_portal_qis wird auch für andere
+   Portal-Seiten (z. B. das Prüfungsverwaltung-Menü) verwendet, die weiter
+   die volle Breite brauchen. */
+.content_max_portal_qis:has(.portalcontent) {
+  max-width: 420px !important;
+  margin: 0 auto !important;
+}
+
+@keyframes qis-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.abstand_vvz,
+.abstand_pruefinfo {
+  height: var(--qis-space-4) !important;
+}
+
+.headline .headlineText {
+  padding-left: var(--qis-space-3) !important;
+}
+
+/* QIS legt .portalcontent/-1/-2 als altes Float-Spalten-Layout an
+   (.portalcontent2 hat sogar ein hartes "min-width: 380px", das durch kein
+   max-width zu unterbieten ist — CSS-Spezifikation: min-width schlägt immer
+   max-width). Auf schmalen Handy-Viewports macht das die Login-/Formular-
+   Spalte breiter als der Bildschirm, das Deko-Bild in .portalcontent1
+   schwebt (float:left) links davor und erzeugt die große Lücke. Wir lösen
+   das komplette Float-Spalten-Layout auf, damit alles normal untereinander
+   fließt und auf die verfügbare Breite schrumpfen kann. */
+.portalcontent,
+.portalcontent1,
+.portalcontent2,
+form.formular {
+  float: none !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: 100%;
+}
+
+/* Kompakte, zentrierte Login-Box statt über die volle Breite der (auf
+   Desktop teils sehr breiten) .content-Karte gestreckt. */
+.portalcontent {
+  max-width: 360px !important;
+  margin: 0 auto !important;
+}
+
+.portalcontent1 img {
+  border-radius: var(--qis-radius-sm);
+  box-shadow: var(--qis-shadow-sm);
+}
+
+/* -------------------------------------------------------------------------
+   Forms
+   ------------------------------------------------------------------------- */
+
+.containerLogin {
+  width: auto !important;
+  max-width: 100%;
+}
+
+.containerLogin ol {
+  margin: 0 auto !important;
+}
+
+.containerLogin ol,
+form ol.treelist,
+fieldset ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--qis-space-4);
+  max-width: 420px;
+}
+
+.label,
+label {
+  display: block;
+  float: none !important;
+  text-align: left !important;
+  width: auto !important;
+  margin: 0 0 var(--qis-space-1) !important;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--qis-text-muted);
+}
+
+/* Leerer Platzhalter aus dem alten Label-Spalten-Layout für labellose
+   Zeilen (z. B. vor dem Anmelden-Button) — schwebt mit "float:left;
+   width:40%" weiterhin als unsichtbare Spalte und schiebt den Button nach
+   rechts. Enthält nur ein &nbsp;, wird komplett ausgeblendet. */
+.nolabel {
+  display: none !important;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  /* min. 16px verhindert das automatische Reinzoomen von iOS/Safari beim
+     Fokussieren eines Feldes (QIS liefert sonst teils <14px Formularschrift). */
+  font: inherit;
+  font-size: max(16px, 1rem);
+  min-height: 44px;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid var(--qis-border);
+  border-radius: var(--qis-radius-sm);
+  background: var(--qis-surface);
+  color: var(--qis-text);
+  transition: border-color 140ms var(--qis-ease-out), box-shadow 140ms var(--qis-ease-out);
+}
+
+/* Schreibgeschützte Info-Felder (z. B. Stammdaten-Tabelle: Name, Geburtsort
+   ...) sind teils echte <input readonly>, teils reiner Zellentext — dadurch
+   wirkten die Werte uneinheitlich (manche mit Rahmen/Box, manche ohne). Da
+   readonly-Felder ohnehin nicht bearbeitbar sind, wie reinen Text ohne
+   Input-Optik darstellen, passend zu den Nachbarwerten. */
+input[readonly],
+input:disabled {
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+  box-shadow: none !important;
+  color: var(--qis-text) !important;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--qis-blue);
+  box-shadow: 0 0 0 3px rgba(var(--qis-blue-rgb), 0.18);
+}
+
+/* Ohne expliziten Override greift hier sonst je nach System-Einstellung
+   (macOS "Hervorhebungsfarbe") ein knallgelber nativer Hintergrund bei Fokus/
+   Hover — Inhalt dann kaum noch lesbar (dasselbe Problem wie bei
+   .qis-sort-select oben). */
+input[type="text"]:focus,
+input[type="text"]:hover,
+input[type="password"]:focus,
+input[type="password"]:hover,
+input[type="email"]:focus,
+input[type="email"]:hover,
+input[type="number"]:focus,
+input[type="number"]:hover,
+input[type="date"]:focus,
+input[type="date"]:hover,
+select:focus,
+select:hover,
+textarea:focus,
+textarea:hover {
+  background-color: var(--qis-surface) !important;
+  color: var(--qis-text) !important;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--qis-blue);
+  vertical-align: middle;
+  margin-right: var(--qis-space-2);
+}
+
+label[for] {
+  cursor: pointer;
+}
+
+.containerLogin li:has(> input[type="submit"]) {
+  display: flex;
+  justify-content: center;
+}
+
+input[type="submit"],
+input.submit,
+button {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  font-size: max(16px, 0.9rem);
+  min-height: 44px;
+  box-sizing: border-box;
+  color: #fff;
+  background: linear-gradient(135deg, var(--qis-blue) 0%, var(--qis-navy) 100%);
+  padding: 11px 22px;
+  border-radius: var(--qis-radius);
+  box-shadow: var(--qis-shadow-sm);
+  transition: transform 160ms var(--qis-ease-out), box-shadow 160ms var(--qis-ease-out), opacity 160ms var(--qis-ease-out);
+}
+
+input[type="submit"]:hover,
+input.submit:hover,
+button:hover {
+  box-shadow: var(--qis-shadow-md);
+}
+
+input[type="submit"]:active,
+input.submit:active,
+button:active {
+  transform: scale(0.97);
+}
+
+fieldset {
+  width: auto !important;
+  border: 1px solid var(--qis-border);
+  border-radius: var(--qis-radius-sm);
+  padding: var(--qis-space-4) !important;
+  margin: var(--qis-space-4) 0;
+}
+
+legend {
+  font-weight: 650;
+  color: var(--qis-heading);
+  padding: 0 var(--qis-space-2);
+}
+
+/* -------------------------------------------------------------------------
+   Tree list (Notenspiegel-Auswahl, Downloads-Ordnerbaum)
+   ------------------------------------------------------------------------- */
+
+ul.treelist {
+  list-style: none;
+  margin: var(--qis-space-3) 0 !important;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: var(--qis-space-2);
+  max-width: 640px;
+  width: 100% !important;
+}
+
+li.treelist {
+  display: block;
+}
+
+li.treelist > ul.treelist {
+  margin: var(--qis-space-2) 0 0 !important;
+  padding-left: 28px !important;
+  max-width: none;
+}
+
+.qis-tree-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--qis-space-3);
+  padding: 14px 18px;
+  border: 1px solid var(--qis-border);
+  border-radius: var(--qis-radius-sm);
+  background: var(--qis-surface);
+  transition: background-color 140ms var(--qis-ease-out), border-color 140ms var(--qis-ease-out),
+    box-shadow 140ms var(--qis-ease-out), transform 140ms var(--qis-ease-out);
+}
+
+.treelist a[href]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.qis-tree-row::after {
+  content: "";
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  margin-left: auto;
+  border-right: 2px solid var(--qis-text-muted);
+  border-bottom: 2px solid var(--qis-text-muted);
+  transform: rotate(-45deg);
+  transition: transform 140ms var(--qis-ease-out), border-color 140ms var(--qis-ease-out);
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .qis-tree-row:hover {
+    background: var(--qis-bg);
+    box-shadow: var(--qis-shadow-sm);
+  }
+
+  .qis-tree-row:hover::after {
+    border-color: var(--qis-blue);
+    transform: rotate(-45deg) translate(2px, -2px);
+  }
+}
+
+.qis-tree-row:focus-within {
+  background: var(--qis-bg);
+  box-shadow: var(--qis-shadow-sm);
+}
+
+.qis-tree-row:focus-within::after {
+  border-color: var(--qis-blue);
+  transform: rotate(-45deg) translate(2px, -2px);
+}
+
+.qis-tree-row:active {
+  transform: scale(0.98);
+}
+
+.treelist a {
+  color: var(--qis-text) !important;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-decoration: none !important;
+  border-radius: var(--qis-radius-sm);
+  background: transparent !important;
+}
+
+.treelist a:focus-visible {
+  outline-offset: -2px;
+}
+
+.treelist img {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* -------------------------------------------------------------------------
+   Funktions-Menülisten (z. B. "Prüfungsverwaltung", "Downloads"-Hub)
+   ------------------------------------------------------------------------- */
+
+/* QIS gibt dem umschließenden Container selbst einen weißen Hintergrund
+   (unabhängig von der <ul> darin) — ohne Reset blieb ein weißer Rahmen um die
+   sonst dunklen Karten sichtbar. Genau wie .portalcontent & Co. (siehe oben)
+   tragen .mikronavi_list und das umschließende <form> teils noch feste
+   Breiten/float aus dem alten Layout, die auf schmalen Handy-Viewports über
+   die Karte hinausragen — hier präventiv mit demselben Reset behandelt. */
+.mikronavi_list,
+form {
+  background: transparent !important;
+  float: none !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: 100%;
+}
+
+.mikronavi_list ol,
+.mikronavi_list ul,
+ul.liste {
+  list-style: none !important;
+  margin: var(--qis-space-3) 0 !important;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: var(--qis-space-2);
+  max-width: 640px;
+  width: 100% !important;
+}
+
+.mikronavi_list li,
+ul.liste li {
+  list-style: none !important;
+}
+
+.mikronavi_list li a,
+ul.liste li a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--qis-space-4);
+  padding: 14px 18px;
+  border: 1px solid var(--qis-border);
+  border-radius: var(--qis-radius-sm);
+  background: var(--qis-surface);
+  color: var(--qis-text) !important;
+  font-weight: 500;
+  font-size: 0.92rem;
+  line-height: 1.35;
+  text-decoration: none !important;
+  transition: background-color 140ms var(--qis-ease-out), border-color 140ms var(--qis-ease-out),
+    transform 140ms var(--qis-ease-out), box-shadow 140ms var(--qis-ease-out);
+}
+
+.mikronavi_list li a::after,
+ul.liste li a::after {
+  content: "";
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid var(--qis-text-muted);
+  border-bottom: 2px solid var(--qis-text-muted);
+  transform: rotate(-45deg);
+  transition: transform 140ms var(--qis-ease-out), border-color 140ms var(--qis-ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mikronavi_list li a:hover,
+  ul.liste li a:hover {
+    background: rgba(var(--qis-blue-rgb), 0.06);
+    border-color: var(--qis-blue-light);
+    box-shadow: var(--qis-shadow-sm);
+  }
+
+  .mikronavi_list li a:hover::after,
+  ul.liste li a:hover::after {
+    border-color: var(--qis-blue);
+    transform: rotate(-45deg) translate(2px, -2px);
+  }
+}
+
+.mikronavi_list li a:focus-visible,
+ul.liste li a:focus-visible {
+  background: rgba(var(--qis-blue-rgb), 0.06);
+  border-color: var(--qis-blue-light);
+  box-shadow: var(--qis-shadow-sm);
+  outline-offset: -2px;
+}
+
+.mikronavi_list li a:focus-visible::after,
+ul.liste li a:focus-visible::after {
+  border-color: var(--qis-blue);
+  transform: rotate(-45deg) translate(2px, -2px);
+}
+
+.mikronavi_list li a:active,
+ul.liste li a:active {
+  transform: scale(0.98);
+}
+
+/* -------------------------------------------------------------------------
+   Tables — modern, responsive (cards on mobile)
+   ------------------------------------------------------------------------- */
+
+table {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0;
+  margin: var(--qis-space-4) 0;
+  font-size: 0.88rem;
+}
+
+caption,
+.t_capt {
+  text-align: left;
+  font-weight: 650;
+  color: var(--qis-heading);
+  padding-bottom: var(--qis-space-2);
+  caption-side: top;
+}
+
+th,
+td {
+  text-align: left !important;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid var(--qis-border) !important;
+  vertical-align: middle !important;
+}
+
+th.tabelleheader,
+th.mod_header {
+  background: var(--qis-bg);
+  color: var(--qis-text-muted);
+  font-size: 0.75rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 2px solid var(--qis-border);
+  white-space: nowrap;
+}
+
+.qis-kv-table tr {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+}
+
+.qis-kv-table th,
+.qis-kv-table td {
+  display: flex;
+  align-items: center;
+  width: auto;
+}
+
+/* Desktop: Abschnitts-Header ("Stammdaten des Studierenden") über die volle
+   Breite spannen (CSS-Grid ignoriert colspan sonst) und Abstand zum Rand
+   geben. caption/.t_capt-Überschriften kleben sonst links am Rand. */
+.qis-kv-table th[colspan],
+.qis-kv-table caption,
+.qis-kv-table .t_capt {
+  grid-column: 1 / -1;
+  padding: var(--qis-space-4) !important;
+  padding-top: var(--qis-space-3) !important;
+}
+
+/* Mobile-Toggle für KV-Tabellen ("Stammdaten des Studierenden"): Button nur in
+   der schmalen Ansicht eingeblendet, ersetzt dort die Abschnitts-Überschrift
+   und klappt den Tabelleninhalt ein, bis er angetippt wird. */
+.qis-kv-toggle {
+  display: none;
+}
+
+th.mod_header {
+  white-space: normal;
+}
+
+tr:hover td {
+  background: rgba(var(--qis-blue-rgb), 0.04);
+}
+
+table:first-of-type tr:hover td {
+  background: transparent;
+}
+
+td.mod_n_basic {
+  font-weight: 500;
+}
+
+.mod_n,
+.mod_n_odd,
+.mod_n_even,
+.mod_n_basic,
+.mod_n_department,
+.mod_n_error,
+.mod_n_conflict {
+  background: var(--qis-surface) !important;
+}
+
+.mod_n,
+.mod_n_odd,
+.mod_n_even,
+.mod_n_basic,
+.mod_n_department,
+.mod_n_conflict {
+  color: var(--qis-text) !important;
+}
+
+[class*="ns_tabelle"] {
+  background: var(--qis-surface) !important;
+  color: var(--qis-text) !important;
+}
+
+.qis-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--qis-radius-sm);
+  border: 1px solid var(--qis-border);
+  margin: var(--qis-space-4) 0;
+}
+
+.qis-table-scroll table {
+  margin: 0;
+  min-width: 640px;
+  border: none;
+}
+
+/* -------------------------------------------------------------------------
+   Lade-Overlay für den Notentabelle-Schnellzugriff (siehe index.js
+   showAutoGradesOverlay) — deckt den Durchklick-Flicker der automatischen
+   Zwischenschritte (Prüfungsverwaltung → Notenspiegel → Abschluss) ab.
+   ------------------------------------------------------------------------- */
+
+#qis-plus-auto-grades-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--qis-space-4);
+  background: var(--qis-bg);
+}
+
+.qis-auto-grades-spinner {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 3px solid var(--qis-border);
+  border-top-color: var(--qis-blue);
+  animation: qis-auto-grades-spin 800ms linear infinite;
+}
+
+@keyframes qis-auto-grades-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.qis-auto-grades-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--qis-text-muted);
+}
+
+/* -------------------------------------------------------------------------
+   Schnellzugriff ("Meine Funktionen" — siehe index.js enhanceFunctionsOverview)
+   ------------------------------------------------------------------------- */
+
+.qis-quicklinks {
+  background: var(--qis-bg);
+  border: 1px solid var(--qis-border);
+  border-radius: var(--qis-radius);
+  padding: var(--qis-space-4);
+  margin: var(--qis-space-5) 0;
+}
+
+.qis-quicklinks-title {
+  font-size: 0.72rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--qis-text-muted);
+  margin-bottom: var(--qis-space-3);
+}
+
+.qis-quicklinks-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--qis-space-2);
+}
+
+.qis-quicklink-btn {
+  background: linear-gradient(135deg, var(--qis-blue) 0%, var(--qis-navy) 100%);
+  color: #fff;
+}
+
+.qis-quicklink-btn:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.qis-quicklinks-status {
+  font-size: 0.85rem;
+  color: var(--qis-text-muted);
+  margin-top: var(--qis-space-2);
+}
+
+.qis-quicklinks-status:empty {
+  display: none;
+}
+
+.qis-quicklinks-chooser {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--qis-space-2);
+  margin-top: var(--qis-space-2);
+}
+
+.qis-quicklink-choice {
+  background: var(--qis-surface);
+  color: var(--qis-text) !important;
+  border: 1px solid var(--qis-border);
+  box-shadow: none;
+}
+
+.qis-quicklink-choice:hover {
+  border-color: var(--qis-blue-light);
+}
+
+/* -------------------------------------------------------------------------
+   Notenspiegel — card-based grade view (ersetzt die rohe QIS-Notentabelle
+   auf state=notenspiegelStudent; siehe index.js enhanceGradesView).
+   ------------------------------------------------------------------------- */
+
+.qis-grades {
+  margin: var(--qis-space-4) 0;
+}
+
+.qis-grades-kpi {
+  background: var(--qis-bg);
+  border: 1px solid var(--qis-border);
+  border-radius: var(--qis-radius);
+  padding: var(--qis-space-4);
+  margin-bottom: var(--qis-space-3);
+}
+
+.qis-grades-overline {
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--qis-text-muted);
+  margin-bottom: var(--qis-space-3);
+}
+
+.qis-grades-stats {
+  display: flex;
+  align-items: stretch;
+}
+
+.qis-grades-stat {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 0 var(--qis-space-3);
+}
+
+.qis-grades-stat + .qis-grades-stat {
+  border-left: 1px solid var(--qis-border);
+}
+
+.qis-grades-stat-value {
+  font-size: 1.5rem;
   font-weight: 700;
+  color: var(--qis-heading);
+}
+
+.qis-grades-stat-label {
+  font-size: 0.78rem;
+  color: var(--qis-text-muted);
+}
+
+.qis-grades-progress {
+  width: 100%;
+  max-width: 180px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--qis-border);
+  margin-top: var(--qis-space-2);
+  overflow: hidden;
+}
+
+.qis-grades-progress-fill {
+  height: 100%;
+  background: var(--qis-blue);
+  border-radius: 2px;
+  transition: width 300ms var(--qis-ease-out);
+}
+
+.qis-grades-filterbar {
+  display: flex;
+  align-items: center;
+  gap: var(--qis-space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--qis-space-3);
+}
+
+.qis-grades-filterchips {
+  display: flex;
+  gap: var(--qis-space-2);
+  flex-wrap: wrap;
+  flex: 1 1 auto;
+}
+
+.qis-choice-chip {
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: rgba(var(--qis-blue-rgb), 0.08);
+  color: var(--qis-text);
+  cursor: pointer;
+  transition: background 150ms var(--qis-ease-out), color 150ms var(--qis-ease-out);
+}
+
+.qis-choice-chip:hover {
+  background: rgba(var(--qis-blue-rgb), 0.14);
+}
+
+.qis-choice-chip.qis-active {
+  background: var(--qis-blue);
+  color: #fff;
+  font-weight: 650;
+}
+
+.qis-sort-select {
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 8px 30px 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--qis-border);
+  background: var(--qis-surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235b6b7a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 10px center;
+  background-size: 14px;
+  color: var(--qis-text);
+  appearance: none;
+  cursor: pointer;
+}
+
+.qis-grades-section-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--qis-grade-section) 70%, var(--qis-text-muted));
+  padding: var(--qis-space-3) var(--qis-space-1) var(--qis-space-1);
+}
+
+.qis-grades-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--qis-space-2);
+}
+
+.qis-grades-empty {
+  text-align: center;
+  color: var(--qis-text-muted);
+  padding: var(--qis-space-5);
+}
+
+.qis-module-card {
+  background: var(--qis-surface);
+  border: 1px solid var(--qis-border);
+  border-radius: var(--qis-radius-sm);
+  box-shadow: var(--qis-shadow-sm);
+  overflow: hidden;
+}
+
+.qis-module-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--qis-space-3);
+  width: 100%;
+  padding: var(--qis-space-3) var(--qis-space-4);
+  min-height: 44px;
+  background: transparent;
+  border: none;
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+}
+
+.qis-module-header-static {
+  cursor: default;
+}
+
+.qis-module-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.qis-module-name {
+  font-weight: 650;
+  color: var(--qis-text);
+}
+
+.qis-module-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.qis-chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 650;
+  padding: 3px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.qis-chip-new {
+  background: var(--qis-brand-orange);
+  color: #fff;
+}
+
+.qis-chip-ects {
+  background: rgba(var(--qis-blue-rgb), 0.08);
+  color: var(--qis-text-muted);
+  font-weight: 500;
+}
+
+.qis-chip-status {
+  background: color-mix(in srgb, var(--qis-grade-noresult) 18%, transparent);
+  color: color-mix(in srgb, var(--qis-grade-noresult) 78%, #111111);
+}
+
+.qis-chip-status[data-status="be"] {
+  background: color-mix(in srgb, var(--qis-grade-be) 18%, transparent);
+  color: color-mix(in srgb, var(--qis-grade-be) 78%, #111111);
+}
+
+.qis-chip-status[data-status="pv"] {
+  background: color-mix(in srgb, var(--qis-grade-pv) 18%, transparent);
+  color: color-mix(in srgb, var(--qis-grade-pv) 78%, #111111);
+}
+
+.qis-chip-status[data-status="fail"] {
+  background: color-mix(in srgb, var(--qis-grade-fail) 18%, transparent);
+  color: color-mix(in srgb, var(--qis-grade-fail) 78%, #111111);
+}
+
+.qis-chip-status[data-status="an"] {
+  background: color-mix(in srgb, var(--qis-grade-an) 18%, transparent);
+  color: color-mix(in srgb, var(--qis-grade-an) 78%, #111111);
+}
+
+.qis-chip-status[data-status="wait"] {
+  background: color-mix(in srgb, var(--qis-grade-wait) 18%, transparent);
+  color: color-mix(in srgb, var(--qis-grade-wait) 78%, #111111);
+}
+
+.qis-chip-status[data-status="notAdmitted"] {
+  background: color-mix(in srgb, var(--qis-grade-notadmitted) 18%, transparent);
+  color: color-mix(in srgb, var(--qis-grade-notadmitted) 78%, #111111);
+}
+
+.qis-module-grade {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex: 0 0 auto;
+}
+
+.qis-grade-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--qis-text);
+}
+
+.qis-chevron {
+  color: var(--qis-text-muted);
+  transition: transform 200ms var(--qis-ease-out);
+}
+
+.qis-module-card.qis-expanded .qis-chevron {
+  transform: rotate(180deg);
+}
+
+.qis-module-attempts {
+  border-top: 1px solid var(--qis-border);
+  padding: var(--qis-space-2) 0;
+}
+
+.qis-attempt-row {
+  display: flex;
+  align-items: center;
+  gap: var(--qis-space-3);
+  padding: 8px var(--qis-space-4);
+  font-size: 0.85rem;
+  color: var(--qis-text-muted);
+}
+
+.qis-attempt-row.qis-attempt-failed {
+  opacity: 0.6;
+}
+
+.qis-attempt-semester {
+  min-width: 72px;
+}
+
+.qis-attempt-note {
+  min-width: 32px;
+  font-weight: 600;
+  color: var(--qis-text);
+}
+
+.qis-attempt-failed .qis-attempt-note {
+  text-decoration: line-through;
+}
+
+.qis-attempt-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.66rem;
+  font-weight: 650;
   letter-spacing: 0.02em;
-  color: color-mix(in srgb, var(--qisplus-section) 55%, #1a1a1a) !important;
-  background-color: color-mix(in srgb, var(--qisplus-section) 15%, transparent) !important;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: rgba(var(--qis-blue-rgb), 0.1);
+  color: var(--qis-text-muted);
+  cursor: help;
 }
 
-/* Etwas mehr Luft in den Zeilen der Notentabelle, damit sie leichter zu
-   unterscheiden sind. Die Klasse setzt das Content-Script auf die Tabelle. */
-.qisplus-table th,
-.qisplus-table td {
-  padding: 6px 8px !important;
-  line-height: 1.45;
-  vertical-align: middle;
+.qis-attempt-versuch {
+  flex: 1 1 auto;
 }
 
-/* "NEU"-Badge für frisch eingetragene Ergebnisse */
-.qisplus-badge-new {
-  display: inline-block;
-  margin-left: 6px;
-  padding: 1px 6px 2px;
-  border-radius: 8px;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  vertical-align: middle;
-  color: #ffffff;
-  background-color: #ff2d55;
+.qis-attempt-datum {
+  color: var(--qis-text-muted);
 }
 
 /* Prüfungsanmeldung: bereits bestandene Konten im Baum markieren */
 .qisplus-course--completed {
-  color: color-mix(in srgb, var(--qisplus-be) 70%, #111111) !important;
+  color: color-mix(in srgb, var(--qis-grade-be) 70%, #111111) !important;
   font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .qis-grades-stat-value {
+    font-size: 1.25rem;
+  }
+
+  .qis-module-header {
+    padding: var(--qis-space-3);
+  }
+
+  .qis-attempt-row {
+    flex-wrap: wrap;
+    row-gap: 4px;
+    padding: 8px var(--qis-space-3);
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Footer
+   ------------------------------------------------------------------------- */
+
+.divfoot {
+  margin-top: auto;
+}
+
+.divfoot_navigation {
+  background: var(--qis-navy) !important;
+  color: #fff !important;
+  padding: var(--qis-space-2) var(--qis-space-5) !important;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--qis-space-4);
+}
+
+.divfoot_navigation a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-size: 0.82rem;
+}
+
+.divfoot_navigation a:hover {
+  color: #fff !important;
+}
+
+.divfoot_logo {
+  background: var(--qis-navy-dark) !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  padding: var(--qis-space-2) var(--qis-space-5) !important;
+  font-size: 0.75rem;
+}
+
+/* -------------------------------------------------------------------------
+   Misc legacy elements
+   ------------------------------------------------------------------------- */
+
+/* Die QIS-"InfoLeiste" ist reines Legacy-Schnickschnack (blaue Hinweis-Box),
+   dessen Inhalt sich mit der QIS+-Optik deckt und dem Studierenden nichts
+   Neues bietet — komplett ausblenden statt nur einzufärben. */
+.InfoLeiste {
+  display: none !important;
+}
+
+span[style*="color:red"],
+.warnung {
+  display: block;
+  background: rgba(175, 25, 63, 0.08);
+  color: var(--qis-red) !important;
+  border: 1px solid rgba(175, 25, 63, 0.2);
+  border-radius: var(--qis-radius-sm);
+  padding: var(--qis-space-3) var(--qis-space-4);
+  margin-top: var(--qis-space-4);
+  font-size: 0.85rem;
+}
+
+.clearer {
+  height: 0;
+}
+
+/* -------------------------------------------------------------------------
+   Responsive breakpoints
+   ------------------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .header_hisinone {
+    padding: 0 var(--qis-space-4) !important;
+  }
+
+  .divloginstatus,
+  .breadcrumb {
+    padding-left: var(--qis-space-4) !important;
+    padding-right: var(--qis-space-4) !important;
+  }
+
+  .divcontent {
+    flex-direction: column;
+    padding: var(--qis-space-3) var(--qis-space-4) var(--qis-space-5) !important;
+    gap: var(--qis-space-3);
+  }
+
+  #makronavigation {
+    display: none !important;
+  }
+
+  .qis-bottom-nav {
+    display: flex;
+  }
+
+  #wrapper {
+    padding-bottom: calc(56px + env(safe-area-inset-bottom) + var(--qis-space-4));
+  }
+
+  .content,
+  .content_max_portal_qis {
+    padding: var(--qis-space-4) !important;
+  }
+
+  .containerLogin ol,
+  form ol.treelist,
+  fieldset ol {
+    max-width: 100%;
+  }
+
+  .qis-table-scroll {
+    border: none;
+    overflow-x: visible;
+    margin-left: calc(-1 * var(--qis-space-4));
+    margin-right: calc(-1 * var(--qis-space-4));
+    width: calc(100% + var(--qis-space-4) * 2);
+  }
+
+  .qis-table-scroll table,
+  table.qis-stack {
+    min-width: 0;
+  }
+
+  .qis-table-scroll thead,
+  table.qis-stack thead,
+  .qis-table-scroll tr.qis-table-head-row,
+  table.qis-stack tr.qis-table-head-row {
+    display: none;
+  }
+
+  .qis-table-scroll tr,
+  table.qis-stack tr {
+    display: block;
+    padding: var(--qis-space-3) var(--qis-space-4);
+    border-bottom: 1px solid var(--qis-border);
+  }
+
+  .qis-table-scroll tr:nth-child(even),
+  table.qis-stack tr:nth-child(even) {
+    background: var(--qis-bg);
+  }
+
+  .qis-table-scroll td,
+  .qis-table-scroll th,
+  table.qis-stack td,
+  table.qis-stack th {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    width: 100%;
+    text-align: left !important;
+    overflow-wrap: break-word;
+    border-bottom: 1px dashed var(--qis-border);
+    padding: 6px 0 !important;
+  }
+
+  .qis-table-scroll tr > td:last-child,
+  .qis-table-scroll tr > th:last-child {
+    border-bottom: none;
+  }
+
+  .qis-table-scroll td[data-label]::before,
+  table.qis-stack td[data-label]::before {
+    content: attr(data-label);
+    font-weight: 650;
+    color: var(--qis-text-muted);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* ---- Key/Value-Tabellen ("Stammdaten", "Fächer", …) ----
+     Die generische Karten-Ansicht oben stapelt jede Zelle als Block untereinander
+     und fügt gestrichelte Trennlinien hinzu — für KV-Tabellen zu viel Platz und
+     optisch inkonsistent (Label und Wert sind kein Inhalt, sondern Metadata).
+     Stattdessen kompakte Zweispaltenliste beibehalten (Label links, Wert rechts)
+     und Abschnitts-Header (th[colspan]) über beide Spalten laufen lassen.
+     !important + Selektoren ohne .qis-table-scroll erzwingen den Look auch, wenn
+     QIS die Tabelle nach dem ersten Rendern neu aufbaut (kurzfristig ohne Klasse
+     oder Wrapper) und die generische Karten-Ansicht wieder greifen würde. */
+  .qis-table-scroll .qis-kv-table {
+    margin: 0;
+  }
+
+  .qis-table-scroll .qis-kv-table tr,
+  .qis-kv-table tr {
+    display: grid !important;
+    grid-template-columns: minmax(0, 38%) minmax(0, 1fr) !important;
+    /* stretch statt baseline: Zellen (z. B. td.mod_n_basic) füllen dann die
+       komplette Zeilenhöhe aus, statt nur auf Textgröße zu schrumpfen. */
+    align-items: stretch;
+    gap: var(--qis-space-2);
+    /* width:100% ist nötig, sonst misst sich das Grid mit dem Inhalt und die
+       Trennlinie läuft nur unter dem Text statt über die ganze Zeilenbreite. */
+    width: 100% !important;
+    padding: var(--qis-space-2) var(--qis-space-4) !important;
+    border-bottom: 1px solid var(--qis-border) !important;
+  }
+
+  .qis-table-scroll .qis-kv-table th,
+  .qis-table-scroll .qis-kv-table td,
+  .qis-kv-table th,
+  .qis-kv-table td {
+    display: block !important;
+    width: auto !important;
+    padding: 4px 0 !important;
+    border: none !important;
+    overflow-wrap: break-word;
+  }
+
+  .qis-table-scroll .qis-kv-table th,
+  .qis-kv-table th {
+    color: var(--qis-text-muted);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .qis-table-scroll .qis-kv-table td,
+  .qis-kv-table td {
+    color: var(--qis-text);
+    text-align: right !important;
+  }
+
+  /* Abschnitts-Header (th mit colspan="2") — im CSS-Grid wird colspan
+     ignoriert, daher per grid-column über beide Spalten setzen */
+  .qis-table-scroll .qis-kv-table th[colspan],
+  .qis-kv-table th[colspan] {
+    grid-column: 1 / -1;
+    padding-top: var(--qis-space-3) !important;
+    padding-bottom: var(--qis-space-1) !important;
+    font-size: 0.75rem;
+    font-weight: 650;
+    color: var(--qis-heading);
+    border-bottom: 1px solid var(--qis-border) !important;
+  }
+
+  /* Zebra-Streifen (jede 2. Zeile anders) wirkt bei KV-Tabellen unstetig —
+     flache Zeilen */ 
+  .qis-table-scroll .qis-kv-table tr:nth-child(even),
+  .qis-kv-table tr:nth-child(even) {
+    background: transparent !important;
+  }
+
+  /* Mobile: KV-Tabelle hinter dem Toggle-Button einklappen. Die kopierte
+     Abschnitts-Überschrift (qis-kv-heading-row) bleibt versteckt, der Button
+     übernimmt ihre Rolle. */
+  .qis-kv-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--qis-space-2);
+    width: 100%;
+    margin: 0;
+    padding: 14px 18px;
+    background: var(--qis-surface) !important;
+    border: 1px solid var(--qis-border) !important;
+    border-radius: var(--qis-radius-sm);
+    color: var(--qis-heading) !important;
+    font-size: 0.85rem;
+    font-weight: 650;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: var(--qis-shadow-sm);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .qis-kv-toggle::after {
+    content: "";
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--qis-text-muted);
+    border-bottom: 2px solid var(--qis-text-muted);
+    transform: rotate(45deg);
+    transition: transform 140ms var(--qis-ease-out);
+  }
+
+  .qis-kv-toggle.qis-kv-expanded::after {
+    transform: rotate(-135deg);
+  }
+
+  .qis-kv-heading-row {
+    display: none !important;
+  }
+
+  /* Auch Caption/t_capt-Überschrift einklappbarer KV-Tabellen ausblenden —
+     der Toggle-Button übernimmt den Titel */ 
+  .qis-table-scroll .qis-kv-table.qis-kv-collapsible caption,
+  .qis-table-scroll .qis-kv-table.qis-kv-collapsible .t_capt,
+  .qis-kv-table.qis-kv-collapsible caption,
+  .qis-kv-table.qis-kv-collapsible .t_capt {
+    display: none !important;
+  }
+
+  .qis-table-scroll .qis-kv-table:not(.qis-kv-expanded),
+  .qis-kv-table:not(.qis-kv-expanded) {
+    display: none !important;
+  }
+
+  .qis-table-scroll:has(> .qis-kv-table:not(.qis-kv-expanded)) {
+    display: none !important;
+  }
+
+  /* Aufgeklappte KV-Tabelle nicht full-bleed (negative Margins) darstellen —
+     die Trennlinien der Zeilen sollen genauso breit sein wie der Toggle-Button
+     darüber, nicht die komplette Content-Breite einnehmen. */
+  .qis-table-scroll:has(> .qis-kv-table) {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .content,
+  .content_max_portal_qis {
+    padding: var(--qis-space-3) !important;
+  }
+
+  .qis-table-scroll {
+    margin-left: calc(-1 * var(--qis-space-3));
+    margin-right: calc(-1 * var(--qis-space-3));
+    width: calc(100% + var(--qis-space-3) * 2);
+  }
+
+  .qis-table-scroll tr,
+  table.qis-stack tr {
+    padding-left: var(--qis-space-3);
+    padding-right: var(--qis-space-3);
+  }
+
+  .mikronavi_list li a,
+  ul.liste li a,
+  .qis-tree-row {
+    gap: var(--qis-space-2);
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+
+  .treelist a {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+
+  li.treelist > ul.treelist {
+    padding-left: 20px !important;
+  }
+
+  .treelist img {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 400px) {
+  body {
+    font-size: 14px;
+  }
+
+  .header_hisinone .logo img.logoHeight {
+    height: 32px !important;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Motion preferences
+   ------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

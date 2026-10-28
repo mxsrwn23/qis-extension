@@ -21,6 +21,8 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      - run: pnpm --filter extension test
+
       - run: pnpm build
 
       - run: pnpm build:firefox
